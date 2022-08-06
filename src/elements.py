@@ -1,4 +1,3 @@
-from tkinter.tix import Tree
 from exceptions import ElementDoesNotExist
 
 
