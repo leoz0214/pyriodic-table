@@ -690,13 +690,134 @@ class Element:
                 self.has_stable_isotope = True
                 self.discovery = "Antoine Jérôme Balard"
                 self.discovery_year = 1825
-                
+            
+            case "krypton" | "kr" | 36:
+                self.name = "krypton"
+                self.symbol = "Kr"
+                self.atomic_number = 36
+                self.atomic_mass = 83.798
+                self.electrons_per_shell = (2, 8, 18, 8)
+                self.state = "gas"
+                self.group = 18
+                self.period = 4
+                self.melting_point_k = 115.78
+                self.boiling_point_k = 119.93
+                self.density = 0.003749
+                self.has_stable_isotope = True
+                self.discovery = "William Ramsay, Morris Travers"
+                self.discovery_year = 1898
+            
+            case "rubidium" | "rb" | 37:
+                self.name = "rubidium"
+                self.symbol = "Rb"
+                self.atomic_number = 37
+                self.atomic_mass = 85.468
+                self.electrons_per_shell = (2, 8, 18, 8, 1)
+                self.state = "solid"
+                self.group = 1
+                self.period = 5
+                self.melting_point_k = 312.45
+                self.boiling_point_k = 961
+                self.density = 1.532
+                self.has_stable_isotope = True
+                self.discovery = "Robert Bunsen, Gustav Kirchhoff"
+                self.discovery_year = 1861
+            
+            case "strontium" | "sr" | 38:
+                self.name = "strontium"
+                self.symbol =  "Sr"
+                self.atomic_number = 38
+                self.atomic_mass = 87.62
+                self.electrons_per_shell = (2, 8, 18, 8, 2)
+                self.state = "solid"
+                self.group = 2
+                self.period = 5
+                self.melting_point_k = 1050
+                self.boiling_point_k = 1650
+                self.density = 2.64
+                self.has_stable_isotope = True
+                self.discovery = "William Cruickshank"
+                self.discovery_year = 1787
 
+            case "yttrium" | "y" | 39:
+                self.name = "yttrium"
+                self.symbol = "Y"
+                self.atomic_number = 39
+                self.atomic_mass = 88.906
+                self.electrons_per_shell = (2, 8, 18, 9, 2)
+                self.state = "solid"
+                self.group = 3
+                self.period = 5
+                self.melting_point_k = 1799
+                self.boiling_point_k = 3203
+                self.density = 4.472
+                self.has_stable_isotope = True
+                self.discovery = "Johan Gadolin"
+                self.discovery_year = 1794
 
-
-
-
-
+            case "zirconium" | "zr" | 40:
+                self.name = "zirconium"
+                self.symbol = "Zr"
+                self.atomic_number = 40
+                self.atomic_mass = 91.224
+                self.electrons_per_shell = (2, 8, 18, 10, 2)
+                self.state = "solid"
+                self.group = 4
+                self.period = 5
+                self.melting_point_k = 2125
+                self.boiling_point_k = 4650
+                self.density = 6.52
+                self.has_stable_isotope = True
+                self.discovery = "Martin Heinrich Klaproth"
+                self.discovery_year = 1789
+            
+            case "niobium" | "nb" | 41:
+                self.name = "niobium"
+                self.symbol = "Nb"
+                self.atomic_number = 41
+                self.atomic_mass = 92.906
+                self.electrons_per_shell = (2, 8, 18, 12, 1)
+                self.state = "solid"
+                self.group = 5
+                self.period = 5
+                self.melting_point_k = 2750
+                self.boiling_point_k = 5017
+                self.density = 8.57
+                self.has_stable_isotope = True
+                self.discovery = "Charles Hatchett"
+                self.discovery_year = 1801
+            
+            case "molybdenum" | "mo" | 42:
+                self.name = "molybdenum"
+                self.symbol = "Mo"
+                self.atomic_number = 42
+                self.atomic_mass = 95.95
+                self.electrons_per_shell = (2, 8, 18, 13, 1)
+                self.state = "solid"
+                self.group = 6
+                self.period = 5
+                self.melting_point_k = 2896
+                self.boiling_point_k = 4912
+                self.density = 10.28
+                self.has_stable_isotope = True
+                self.discovery = "Carl Wilhelm Scheele"
+                self.discovery_year = 1778
+            
+            case "technetium" | "tc" | 43:
+                self.name = "technetium"
+                self.symbol = "Tc"
+                self.atomic_number = 43
+                self.atomic_mass = 98
+                self.electrons_per_shell = (2, 8, 18, 13, 2)
+                self.state = "solid"
+                self.group = 7
+                self.period = 5
+                self.melting_point_k = 2430
+                self.boiling_point_k = 4538
+                self.density = 11
+                self.has_stable_isotope = False
+                self.discovery = "Emilio Segrè, Carlo Perrier"
+                self.discovery_year = 1937
 
             case _:
                 raise ElementDoesNotExist(
