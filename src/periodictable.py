@@ -9,8 +9,7 @@ class PeriodicTable:
     def __init__(self) -> None:
         """
         Creates a new instance of the periodic table.
-        Gets all the elements of the periodic table
-        by atomic number.
+        Gets all the elements of the periodic table by atomic number.
         """
         self.elements = []
 
@@ -32,7 +31,7 @@ class PeriodicTable:
         return [
             element for element in self.elements if element.state == state]
 
-    def __len__(self):
+    def __len__(self) -> int:
         """
         Returns the number of elements in the periodic table.
         """

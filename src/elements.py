@@ -9,6 +9,102 @@ class Element:
     hydrogen, helium, lithium, beryllium, boron
     """
 
+    @property
+    def melting_point_c(self) -> float:
+        if self.melting_point_k is None:
+            return None
+
+        return round(self.melting_point_k - 273.15, 10)
+    
+    @property
+    def melting_point_f(self) -> float:
+        if self.melting_point_k is None:
+            return None
+
+        return round(1.8 * (self.melting_point_k - 273.15) + 32, 10)
+
+    @property
+    def boiling_point_c(self) -> float:
+        if self.boiling_point_k is None:
+            return None
+
+        return round(self.boiling_point_k - 273.15, 10)
+
+    @property
+    def boiling_point_f(self) -> float:
+        if self.boiling_point_k is None:
+            return None
+
+        return round(1.8 * (self.boiling_point_k - 273.15) + 32, 10)
+    
+    @property
+    def protons(self) -> int:
+        # Number of protons = atomic number
+        return self.atomic_number
+
+    @property
+    def electrons(self) -> int:
+        # Number of electrons = atomic number
+        return self.atomic_number
+    
+    def __repr__(self) -> str:
+        return self.name
+
+    def get_display_data(self) -> str:
+        """
+        Returns available element information as one string.
+        Useful for outputting element data to the console.
+        """
+        lines = [
+            f"Name: {self.name.title()}",
+            f"Symbol: {self.symbol}",
+            f"Atomic number: {self.atomic_number}",
+            f"Atomic mass: {self.atomic_mass}"
+        ]
+
+        if self.electrons_per_shell is not None:
+            lines.append(f"Electrons per shell: {self.electrons_per_shell}")
+
+        if self.state is not None:
+            lines.append(f"State (room temperature): {self.state.title()}")
+
+        lines.append(f"Group: {self.group}")
+        lines.append(f"Period: {self.period}")
+
+        if self.melting_point_k is not None:
+            lines.append(
+                "Melting point: {} K / {} °C / {} °F".format(
+                    self.melting_point_k, 
+                    self.melting_point_c,
+                    self.melting_point_f
+                )
+            )
+        
+        if self.boiling_point_k is not None:
+            lines.append(
+                "Melting point: {} K / {} °C / {} °F".format(
+                    self.boiling_point_k,
+                    self.boiling_point_c,
+                    self.boiling_point_f
+                )
+            )
+        
+        if self.density is not None:
+            lines.append(f"Density (room temperature): {self.density} g/cm³")
+        
+        lines.append(f"Has stable isotope(s): {self.has_stable_isotope}")
+
+        if self.discovery is not None:
+            lines.append(
+                "Discovered by: {} in {}".format(
+                    self.discovery,
+                    self.discovery_year if self.discovery_year >= 0
+                    else f"{abs(self.discovery_year)} BC"
+                )
+            )
+
+        return "\n".join(lines)
+
     def __init__(self, info: str | int) -> None:
         """
         The 'info' parameter allows for 3 ways to identify an element:
@@ -355,102 +451,259 @@ class Element:
                 self.discovery = "Humphry Davy"
                 self.discovery_year = 1808
 
+            case "scandium" | "sc" | 21:
+                self.name = "scandium"
+                self.symbol = "Sc"
+                self.atomic_number = 21
+                self.atomic_mass = 44.956
+                self.electrons_per_shell = (2, 8, 9, 2)
+                self.state = "solid"
+                self.group = 3
+                self.period = 4
+                self.melting_point_k = 1814
+                self.boiling_point_k = 3109
+                self.density = 2.985
+                self.has_stable_isotope = True
+                self.discovery = "Lars Fredrik Nilson"
+                self.discovery_year = 1879
+            
+            case "titanium" | "ti" | 22:
+                self.name = "titanium"
+                self.symbol = "Ti"
+                self.atomic_number = 22
+                self.atomic_mass = 47.867
+                self.electrons_per_shell = (2, 8, 10, 2)
+                self.state = "solid"
+                self.group = 4
+                self.period = 4
+                self.melting_point_k = 1941
+                self.boiling_point_k = 3560
+                self.density = 4.506
+                self.has_stable_isotope = True
+                self.discovery = "William Gregor"
+                self.discovery_year = 1791
+
+            case "vanadium" | "v" | 23:
+                self.name = "vanadium"
+                self.symbol = "V"
+                self.atomic_number = 23
+                self.atomic_mass = 50.942
+                self.electrons_per_shell = (2, 8, 11, 2)
+                self.state = "solid"
+                self.group = 5
+                self.period = 4
+                self.melting_point_k = 2183
+                self.boiling_point_k = 3680
+                self.density = 6.11
+                self.has_stable_isotope = True
+                self.discovery = "Nils Gabriel Sefström"
+                self.discovery_year = 1830
+
+            case "chromium" | "cr" | 24:
+                self.name = "chromium"
+                self.symbol = "Cr"
+                self.atomic_number = 24
+                self.atomic_mass = 51.996
+                self.electrons_per_shell = (2, 8, 13, 1)
+                self.state = "solid"
+                self.group = 6
+                self.period = 4
+                self.melting_point_k = 2180
+                self.boiling_point_k = 2944
+                self.density = 7.15
+                self.has_stable_isotope = True
+                self.discovery = "Louis Nicolas Vauquelin"
+                self.discovery_year = 1794
+            
+            case "manganese" | "mn" | 25:
+                self.name = "manganese"
+                self.symbol = "Mn"
+                self.atomic_number = 25
+                self.atomic_mass = 54.938
+                self.electrons_per_shell = (2, 8, 13, 2)
+                self.state = "solid"
+                self.group = 7
+                self.period = 4
+                self.melting_point_k = 1519
+                self.boiling_point_k = 2334
+                self.density = 7.21
+                self.has_stable_isotope = True
+                self.discovery = "Carl Wilhelm Scheele"
+                self.discovery_year = 1774
+
+            case "iron" | "fe" | 26:
+                self.name = "iron"
+                self.symbol = "Fe"
+                self.atomic_number = 26
+                self.atomic_mass = 55.845
+                self.electrons_per_shell = (2, 8, 14, 2)
+                self.state = "solid"
+                self.group = 8
+                self.period = 4
+                self.melting_point_k = 1811
+                self.boiling_point_k = 3134
+                self.density = 7.874
+                self.has_stable_isotope = True
+                self.discovery = None
+                self.discovery_year = None
+            
+            case "cobalt" | "co" | 27:
+                self.name = "cobalt"
+                self.symbol = "Co"
+                self.atomic_number = 27
+                self.atomic_mass = 58.933
+                self.electrons_per_shell = (2, 8, 15, 2)
+                self.state = "solid"
+                self.group = 9
+                self.period = 4
+                self.melting_point_k = 1768
+                self.boiling_point_k = 3200
+                self.density = 8.9
+                self.has_stable_isotope = True
+                self.discovery = "Georg Brandt"
+                self.discovery_year = 1735
+
+            case "nickel" | "ni" | 28:
+                self.name = "nickel"
+                self.symbol = "Ni"
+                self.atomic_number = 28
+                self.atomic_mass = 58.693
+                self.electrons_per_shell = (2, 8, 16, 2)
+                self.state = "solid"
+                self.group = 10
+                self.period = 4
+                self.melting_point_k = 1728
+                self.boiling_point_k = 3003
+                self.density = 8.908
+                self.has_stable_isotope = True
+                self.discovery = "Axel Fredrik Cronstedt"
+                self.discovery_year = 1751
+            
+            case "copper" | "cu" | 29:
+                self.name = "copper"
+                self.symbol = "Cu"
+                self.atomic_number = 29
+                self.atomic_mass = 63.546
+                self.electrons_per_shell = (2, 8, 18, 1)
+                self.state = "solid"
+                self.group = 11
+                self.period = 4
+                self.melting_point_k = 1357.77
+                self.boiling_point_k = 2835
+                self.density = 8.96
+                self.has_stable_isotope = True
+                self.discovery = "Middle East"
+                self.discovery_year = -9000
+            
+            case "zinc" | "zn" | 30:
+                self.name = "zinc"
+                self.symbol = "Zn"
+                self.atomic_number = 30
+                self.atomic_mass = 65.38
+                self.electrons_per_shell = (2, 8, 18, 2)
+                self.state = "solid"
+                self.group = 12
+                self.period = 4
+                self.melting_point_k = 692.68
+                self.boiling_point_k = 1180
+                self.density = 7.14
+                self.has_stable_isotope = True
+                self.discovery = "Andreas Sigismund Marggraf"
+                self.discovery_year = 1746
+
+            case "gallium" | "ga" | 31:
+                self.name = "gallium"
+                self.symbol = "Ga"
+                self.atomic_number = 31
+                self.atomic_mass = 69.723
+                self.electrons_per_shell = (2, 8, 18, 3)
+                self.state = "solid"
+                self.group = 13
+                self.period = 4
+                self.melting_point_k = 302.9146
+                self.boiling_point_k = 2673
+                self.density = 5.91
+                self.has_stable_isotope = True
+                self.discovery = "Lecoq de Boisbaudran"
+                self.discovery_year = 1875
+
+            case "germanium" | "ge" | 32:
+                self.name = "germanium"
+                self.symbol = "Ge"
+                self.atomic_number = 32
+                self.atomic_mass = 72.63
+                self.electrons_per_shell = (2, 8, 18, 4)
+                self.state = "solid"
+                self.group = 14
+                self.period = 4
+                self.melting_point_k = 1211.4
+                self.boiling_point_k = 3106
+                self.density = 5.323
+                self.has_stable_isotope = True
+                self.discovery = "Clemens Winkler"
+                self.discovery_year = 1886
+
+            case "arsenic" | "as" | 33:
+                self.name = "arsenic"
+                self.symbol = "As"
+                self.atomic_number = 33
+                self.atomic_mass = 74.922
+                self.electrons_per_shell = (2, 8, 18, 5)
+                self.state = "solid"
+                self.group = 15
+                self.period = 4
+                self.melting_point_k = 1090
+                self.boiling_point_k = 887
+                self.density = 5.727
+                self.has_stable_isotope = True
+                self.discovery = "Albertus Magnus"
+                self.discovery_year = 1250
+            
+            case "selenium" | "se" | 34:
+                self.name = "selenium"
+                self.symbol = "Se"
+                self.atomic_number = 34
+                self.atomic_mass = 78.971
+                self.electrons_per_shell = (2, 8, 18, 6)
+                self.state = "solid"
+                self.group = 16
+                self.period = 4
+                self.melting_point_k = 494
+                self.boiling_point_k = 958
+                self.density = 4.81
+                self.has_stable_isotope = True
+                self.discovery = "Jöns Jakob Berzelius"
+                self.discovery_year = 1817
+            
+            case "bromine" | "br" | 35:
+                self.name = "bromine"
+                self.symbol = "Br"
+                self.atomic_number = 35
+                self.atomic_mass = 79.904
+                self.electrons_per_shell = (2, 8, 18, 7)
+                self.state = "liquid"
+                self.group = 17
+                self.period = 4
+                self.melting_point_k = 265.8
+                self.boiling_point_k = 332
+                self.density = 3.1028
+                self.has_stable_isotope = True
+                self.discovery = "Antoine Jérôme Balard"
+                self.discovery_year = 1825
+                
+
+
+
+
+
+
+
             case _:
                 raise ElementDoesNotExist(
                     ("Info does not match the name, symbol or atomic number "
-                    "of any element.")
+                    f"of any element: {info}")
                 )
-
-    @property
-    def melting_point_c(self) -> float:
-        if self.melting_point_k is None:
-            return None
-
-        return round(self.melting_point_k - 273.15, 10)
-    
-    @property
-    def melting_point_f(self) -> float:
-        if self.melting_point_k is None:
-            return None
-
-        return round(1.8 * (self.melting_point_k - 273.15) + 32, 10)
-
-    @property
-    def boiling_point_c(self) -> float:
-        if self.boiling_point_k is None:
-            return None
-
-        return round(self.boiling_point_k - 273.15, 10)
-
-    @property
-    def boiling_point_f(self) -> float:
-        if self.boiling_point_k is None:
-            return None
-
-        return round(1.8 * (self.boiling_point_k - 273.15) + 32, 10)
-    
-    @property
-    def protons(self) -> int:
-        # Number of protons = atomic number
-        return self.atomic_number
-
-    @property
-    def electrons(self) -> int:
-        # Number of electrons = atomic number
-        return self.atomic_number
-    
-    def __repr__(self) -> str:
-        return self.name
-
-    def get_display_data(self) -> str:
-        """
-        Returns available element information as one string.
-        Useful for outputting element data to the console.
-        """
-        lines = [
-            f"Name: {self.name.title()}",
-            f"Symbol: {self.symbol}",
-            f"Atomic number: {self.atomic_number}",
-            f"Atomic mass: {self.atomic_mass}"
-        ]
-
-        if self.electrons_per_shell is not None:
-            lines.append(f"Electrons per shell: {self.electrons_per_shell}")
-
-        if self.state is not None:
-            lines.append(f"State (room temperature): {self.state.title()}")
-
-        lines.append(f"Group: {self.group}")
-        lines.append(f"Period: {self.period}")
-
-        if self.melting_point_k is not None:
-            lines.append(
-                "Melting point: {} K / {} °C / {} °F".format(
-                    self.melting_point_k, 
-                    self.melting_point_c,
-                    self.melting_point_f
-                )
-            )
-        
-        if self.boiling_point_k is not None:
-            lines.append(
-                "Melting point: {} K / {} °C / {} °F".format(
-                    self.boiling_point_k, 
-                    self.boiling_point_c,
-                    self.boiling_point_f
-                )
-            )
-        
-        if self.density is not None:
-            lines.append(f"Density (room temperature): {self.density} g/cm³")
-        
-        lines.append(f"Has stable isotope(s): {self.has_stable_isotope}")
-        lines.append(
-            f"Discovered by: {self.discovery} in {self.discovery_year}")
-
-        return "\n".join(lines)
 
 
 if __name__ == "__main__":
-    for i in range(1, 21):
-        print(Element(i).get_display_data())
+    print(Element("cu").get_display_data())
