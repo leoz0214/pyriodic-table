@@ -208,12 +208,149 @@ class Element:
                 self.discovery = "Humphry Davy"
                 self.discovery_year = 1807 
             
+            case "magnesium" | "mg" | 12:
+                self.name = "magnesium"
+                self.symbol = "Mg"
+                self.atomic_number = 12
+                self.atomic_mass = 24.305
+                self.electrons_per_shell = (2, 8, 2)
+                self.state = "solid"
+                self.group = 2
+                self.period = 3
+                self.melting_point_k = 923
+                self.boiling_point_k = 1363
+                self.density = 1.738
+                self.has_stable_isotope = True
+                self.discovery = "Joseph Black"
+                self.discovery_year = 1755
+
+            case "aluminium" | "al" | 13:
+                self.name = "aluminium"
+                self.symbol = "Al"
+                self.atomic_number = 13
+                self.atomic_mass = 26.982
+                self.electrons_per_shell = (2, 8, 3)
+                self.state = "solid"
+                self.group = 13
+                self.period = 3
+                self.melting_point_k = 933.47
+                self.boiling_point_k = 2743
+                self.density = 2.7
+                self.has_stable_isotope = True
+                self.discovery = "Hans Christian Ørsted"
+                self.discovery_year = 1824
             
+            case "silicon" | "si" | 14:
+                self.name = "silicon"
+                self.symbol = "Si"
+                self.atomic_number = 14
+                self.atomic_mass = 28.085
+                self.electrons_per_shell = (2, 8, 4)
+                self.state = "solid"
+                self.group = 14
+                self.period = 3
+                self.melting_point_k = 1414
+                self.boiling_point_k = 3538
+                self.density = 2.329
+                self.has_stable_isotope = True
+                self.discovery = "Jöns Jacob Berzelius"
+                self.discovery_year = 1823
 
+            case "phosphorus" | "p" | 15:
+                self.name = "phosphorus"
+                self.symbol = "P"
+                self.atomic_number = 15
+                self.atomic_mass = 30.974
+                self.electrons_per_shell = (2, 8, 5)
+                self.state = "solid"
+                self.group = 15
+                self.period = 3
+                self.melting_point_k = 317.3
+                self.boiling_point_k = 553.7
+                self.density = 1.823
+                self.has_stable_isotope = True
+                self.discovery = "Hennig Brand"
+                self.discovery_year = 1669
 
-             
+            case "sulfur" | "sulphur" | "s" | 16:
+                self.name = "sulfur"
+                self.symbol = "S"
+                self.atomic_number = 16
+                self.atomic_mass = 32.06
+                self.electrons_per_shell = (2, 8, 6)
+                self.state = "solid"
+                self.group = 16
+                self.period = 3
+                self.melting_point_k = 388.36
+                self.boiling_point_k = 717.8
+                self.density = 2.07
+                self.has_stable_isotope = True
+                self.discovery = "Antoine Lavoisier"
+                self.discovery_year = 1777
 
+            case "chlorine" | "cl" | 17:
+                self.name = "chlorine"
+                self.symbol = "Cl"
+                self.atomic_number = 17
+                self.atomic_mass = 35.45
+                self.electrons_per_shell = (2, 8, 7)
+                self.state = "gas"
+                self.group = 17
+                self.period = 3
+                self.melting_point_k = 171.6
+                self.boiling_point_k = 239.11
+                self.density = 0.0032
+                self.has_stable_isotope = True
+                self.discovery = "Carl Wilhelm Scheele"
+                self.discovery_year = 1774
+            
+            case "argon" | "ar" | 18:
+                self.name = "argon"
+                self.symbol = "Ar"
+                self.atomic_number = 18
+                self.atomic_mass = 39.95
+                self.electrons_per_shell = (2, 8, 8)
+                self.state = "gas"
+                self.group = 18
+                self.period = 3
+                self.melting_point_k = 83.81
+                self.boiling_point_k = 87.302
+                self.density = 0.001784
+                self.has_stable_isotope = True
+                self.discovery = "Lord Rayleigh, William Ramsay"
+                self.discovery_year = 1894
 
+            case "potassium" | "k" | 19:
+                self.name = "potassium"
+                self.symbol = "K"
+                self.atomic_number = 19
+                self.atomic_mass = 39.098
+                self.electrons_per_shell = (2, 8, 8, 1)
+                self.state = "solid"
+                self.group = 1
+                self.period = 4
+                self.melting_point_k = 336.7
+                self.boiling_point_k = 1032
+                self.density = 0.89
+                self.has_stable_isotope = True
+                self.discovery = "Humphry Davy"
+                self.discovery_year = 1807
+
+            case "calcium" | "ca" | 20:
+                self.name = "calcium"
+                self.symbol = "Ca"
+                self.atomic_number = 20
+                self.atomic_mass = 40.078
+                self.electrons_per_shell = (2, 8, 8, 2)
+                self.state = "solid"
+                self.group = 2
+                self.period = 4
+                self.melting_point_k = 1115
+                self.boiling_point_k = 1757
+                self.density = 1.55
+                self.has_stable_isotope = True
+                self.discovery = "Humphry Davy"
+                self.discovery_year = 1808
 
             case _:
                 raise ValueError(
@@ -310,4 +447,5 @@ class Element:
 
 
 if __name__ == "__main__":
-    print(Element("SODIUM"))
+    for i in range(1, 21):
+        print(str(Element(i)) + "\n\n\n")
