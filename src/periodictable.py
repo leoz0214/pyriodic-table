@@ -6,7 +6,7 @@ class PeriodicTable:
     Holds the data for all 118 elements.
     """
 
-    def __init__(self):
+    def __init__(self) -> None:
         """
         Creates a new instance of the periodic table.
         """
@@ -16,7 +16,7 @@ class PeriodicTable:
         for atomic_number in range(1, 21):
             element = elements.Element(atomic_number)
             setattr(self, element.name, element)
-            
+
             self.elements.append(element)
             self.element_names.append(element.name)
 

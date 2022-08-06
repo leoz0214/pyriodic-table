@@ -6,7 +6,7 @@ class Element:
     hydrogen, helium, lithium, beryllium, boron
     """
 
-    def __init__(self, info: str | int):
+    def __init__(self, info: str | int) -> None:
         """
         The 'info' parameter allows for 3 ways to identify an element:
         - Name of element e.g hydrogen <str>
@@ -359,40 +359,40 @@ class Element:
                 )
 
     @property
-    def melting_point_c(self):
+    def melting_point_c(self) -> float:
         if self.melting_point_k is None:
             return None
 
         return round(self.melting_point_k - 273.15, 10)
     
     @property
-    def melting_point_f(self):
+    def melting_point_f(self) -> float:
         if self.melting_point_k is None:
             return None
 
         return round(1.8 * (self.melting_point_k - 273.15) + 32, 10)
 
     @property
-    def boiling_point_c(self):
+    def boiling_point_c(self) -> float:
         if self.boiling_point_k is None:
             return None
 
         return round(self.boiling_point_k - 273.15, 10)
 
     @property
-    def boiling_point_f(self):
+    def boiling_point_f(self) -> float:
         if self.boiling_point_k is None:
             return None
 
         return round(1.8 * (self.boiling_point_k - 273.15) + 32, 10)
     
     @property
-    def protons(self):
+    def protons(self) -> int:
         # Number of protons = atomic number
         return self.atomic_number
 
     @property
-    def electrons(self):
+    def electrons(self) -> int:
         # Number of electrons = atomic number
         return self.atomic_number
 
