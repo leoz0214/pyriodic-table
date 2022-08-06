@@ -1,3 +1,6 @@
+from exceptions import ElementDoesNotExist
+
+
 class Element:
     """
     Represents an element of the periodic table.
@@ -353,7 +356,7 @@ class Element:
                 self.discovery_year = 1808
 
             case _:
-                raise ValueError(
+                raise ElementDoesNotExist(
                     ("Info does not match the name, symbol or atomic number "
                     "of any element.")
                 )
@@ -395,8 +398,11 @@ class Element:
     def electrons(self) -> int:
         # Number of electrons = atomic number
         return self.atomic_number
-
+    
     def __repr__(self) -> str:
+        return self.name
+
+    def get_display_data(self) -> str:
         """
         Returns available element information as one string.
         Useful for outputting element data to the console.
@@ -440,12 +446,11 @@ class Element:
         
         lines.append(f"Has stable isotope(s): {self.has_stable_isotope}")
         lines.append(
-            f"Discovered by: {self.discovery} in {self.discovery_year}"
-        )
+            f"Discovered by: {self.discovery} in {self.discovery_year}")
 
         return "\n".join(lines)
 
 
 if __name__ == "__main__":
     for i in range(1, 21):
-        print(str(Element(i)) + "\n\n\n")
+        print(Element(i).get_display_data())
