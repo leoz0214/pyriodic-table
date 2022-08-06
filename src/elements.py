@@ -1,3 +1,4 @@
+from tkinter.tix import Tree
 from exceptions import ElementDoesNotExist
 
 
@@ -818,6 +819,364 @@ class Element:
                 self.has_stable_isotope = False
                 self.discovery = "Emilio Segrè, Carlo Perrier"
                 self.discovery_year = 1937
+            
+            case "ruthenium" | "ru" | 44:
+                self.name = "ruthenium"
+                self.symbol = "Ru"
+                self.atomic_number = 44
+                self.atomic_mass = 101.07
+                self.electrons_per_shell = (2, 8, 18, 15, 1)
+                self.state = "solid"
+                self.group = 8
+                self.period = 5
+                self.melting_point_k = 2607
+                self.boiling_point_k = 4423
+                self.density = 12.45
+                self.has_stable_isotope = True
+                self.discovery = "Karl Ernst Claus"
+                self.discovery_year = 1844
+            
+            case "rhodium" | "rh" | 45:
+                self.name = "rhodium"
+                self.symbol = "Rh"
+                self.atomic_number = 45
+                self.atomic_mass = 102.91
+                self.electrons_per_shell = (2, 8, 18, 16, 1)
+                self.state = "solid"
+                self.group = 9
+                self.period = 5
+                self.melting_point_k = 2237
+                self.boiling_point_k = 3968
+                self.density = 12.41
+                self.has_stable_isotope = True
+                self.discovery = "William Hyde Wollaston"
+                self.discovery_year = 1804
+
+            case "palladium" | "pd" | 46:
+                self.name = "palladium"
+                self.symbol = "Pd"
+                self.atomic_number = 46
+                self.atomic_mass = 106.42
+                self.electrons_per_shell = (2, 8, 18, 18)
+                self.state = "solid"
+                self.group = 10
+                self.period = 5
+                self.melting_point_k = 1828.05
+                self.boiling_point_k = 3236
+                self.density = 12.023
+                self.has_stable_isotope = True
+                self.discovery = "William Hyde Wollaston"
+                self.discovery_year = 1802
+
+            case "silver" | "ag" | 47:
+                self.name = "silver"
+                self.symbol = "Ag"
+                self.atomic_number = 47
+                self.atomic_mass = 107.87
+                self.electrons_per_shell = (2, 8, 18, 18, 1)
+                self.state = "solid"
+                self.group = 11
+                self.period = 5
+                self.melting_point_k = 1234.93
+                self.boiling_point_k = 2435
+                self.density = 10.49
+                self.has_stable_isotope = True
+                self.discovery = None
+                self.discovery_year = None
+
+            case "cadmium" | "cd" | 48:
+                self.name = "cadmium"
+                self.symbol = "Cd"
+                self.atomic_number = 48
+                self.atomic_mass = 112.41
+                self.electrons_per_shell = (2, 8, 18, 18, 2)
+                self.state = "solid"
+                self.group = 12
+                self.period = 5
+                self.melting_point_k = 594.22
+                self.boiling_point_k = 1040
+                self.density = 8.65
+                self.has_stable_isotope = True
+                self.discovery = (
+                    "Karl Samuel Leberecht Hermann, Friedrich Stromeyer")
+                self.discovery_year = 1817
+            
+            case "indium" | "in" | 49:
+                self.name = "indium"
+                self.symbol = "In"
+                self.atomic_number = 49
+                self.atomic_mass = 114.82
+                self.electrons_per_shell = (2, 8, 18, 18, 3)
+                self.state = "solid"
+                self.group = 13
+                self.period = 5
+                self.melting_point_k = 429.7485
+                self.boiling_point_k = 2345
+                self.density = 7.31
+                self.has_stable_isotope = True
+                self.discovery = (
+                    "Ferdinand Reich, Hieronymous Theodor Richter")
+                self.discovery_year = 1863
+            
+            case "tin" | "sn" | 50:
+                self.name = "tin"
+                self.symbol = "Sn"
+                self.atomic_number = 50
+                self.atomic_mass = 118.71
+                self.electrons_per_shell = (2, 8, 18, 18, 4)
+                self.state = "solid"
+                self.group = 14
+                self.period = 5
+                self.melting_point_k = 505.08
+                self.boiling_point_k = 2875
+                self.density = 7.265
+                self.has_stable_isotope = True
+                self.discovery = None
+                self.discovery_year = None
+
+            case "antimony" | "sb" | 51:
+                self.name = "antimony"
+                self.symbol = "Sb"
+                self.atomic_number = 51
+                self.atomic_mass = 121.76
+                self.electrons_per_shell = (2, 8, 18, 18, 5)
+                self.state = "solid"
+                self.group = 15
+                self.period = 5
+                self.melting_point_k = 903.78
+                self.boiling_point_k = 1908
+                self.density = 6.697
+                self.has_stable_isotope = True
+                self.discovery = None
+                self.discovery_year = None
+            
+            case "tellurium" | "te" | 52:
+                self.name = "tellurium"
+                self.symbol = "Te"
+                self.atomic_number = 52
+                self.atomic_mass = 127.6
+                self.electrons_per_shell = (2, 8, 18, 18, 6)
+                self.state = "solid"
+                self.group = 16
+                self.period = 5
+                self.melting_point_k = 722.66
+                self.boiling_point_k = 1261
+                self.density = 6.24
+                self.has_stable_isotope = True
+                self.discovery = "Franz-Joseph Müller von Reichenstein"
+                self.discovery_year = 1782
+            
+            case "iodine" | "i" | 53:
+                self.name = "iodine"
+                self.symbol = "I"
+                self.atomic_number = 53
+                self.atomic_mass = 126.9
+                self.electrons_per_shell = (2, 8, 18, 18, 7)
+                self.state = "solid"
+                self.group = 17
+                self.period = 5
+                self.melting_point_k = 386.85
+                self.boiling_point_k = 457.4
+                self.density = 4.933
+                self.has_stable_isotope = True
+                self.discovery = "Bernard Courtois"
+                self.discovery_year = 1811
+
+            case "xenon" | "xe" | 54:
+                self.name = "xenon"
+                self.symbol = "Xe"
+                self.atomic_number = 54
+                self.atomic_mass = 131.29
+                self.electrons_per_shell = (2, 8, 18, 18, 8)
+                self.state = "gas"
+                self.group = 18
+                self.period = 5
+                self.melting_point_k = 161.4
+                self.boiling_point_k = 165.051
+                self.density = 0.005894
+                self.has_stable_isotope = True
+                self.discovery = "William Ramsay, Morris Travers"
+                self.discovery_year = 1898
+            
+            case "caesium" | "cesium" | "cs" | 55:
+                self.name = "caesium"
+                self.symbol = "Cs"
+                self.atomic_number = 55
+                self.atomic_mass = 132.91
+                self.electrons_per_shell = (2, 8, 18, 18, 8, 1)
+                self.state = "solid"
+                self.group = 1
+                self.period = 6
+                self.melting_point_k = 301.7
+                self.boiling_point_k = 944
+                self.density = 1.93
+                self.has_stable_isotope = True
+                self.discovery = "Robert Bunsen, Gustav Kirchhoff"
+                self.discovery_year = 1860
+            
+            case "barium" | "ba" | 56:
+                self.name = "barium"
+                self.symbol = "Ba"
+                self.atomic_number = 56
+                self.atomic_mass = 137.33
+                self.electrons_per_shell = (2, 8, 18, 18, 8, 2)
+                self.state = "solid"
+                self.group = 2
+                self.period = 6
+                self.melting_point_k = 1000
+                self.boiling_point_k = 2118
+                self.density = 3.51
+                self.has_stable_isotope = True
+                self.discovery = "Carl Wilhelm Scheele"
+                self.discovery_year = 1772
+            
+            case "lanthanum" | "la" | 57:
+                self.name = "lanthanum"
+                self.symbol = "La"
+                self.atomic_number = 57
+                self.atomic_mass = 138.91
+                self.electrons_per_shell = (2, 8, 18, 18, 9, 2)
+                self.state = "solid"
+                self.group = None
+                self.period = 6
+                self.melting_point_k = 1193
+                self.boiling_point_k = 3737
+                self.density = 6.162
+                self.has_stable_isotope = True
+                self.discovery = "Carl Gustaf Mosander"
+                self.discovery_year = 1838
+
+            case "cerium" | "ce" | 58:
+                self.name = "cerium"
+                self.symbol = "Ce"
+                self.atomic_number = 58
+                self.atomic_mass = 140.12
+                self.electrons_per_shell = (2, 8, 18, 19, 9, 2)
+                self.state = "solid"
+                self.group = None
+                self.period = 6
+                self.melting_point_k = 1068
+                self.boiling_point_k = 3716
+                self.density = 6.77
+                self.has_stable_isotope = True
+                self.discovery = (
+                    "Martin Heinrich Klaproth, Jöns Jakob Berzelius, "
+                    "Wilhelm Hisinger")
+                self.discovery_year = 1803
+            
+            case "praseodymium" | "pr" | 59:
+                self.name = "praseodymium"
+                self.symbol = "Pr"
+                self.atomic_number = 59
+                self.atomic_mass = 140.91
+                self.electrons_per_shell = (2, 8, 18, 21, 8, 2)
+                self.state = "solid"
+                self.group = None
+                self.period = 6
+                self.melting_point_k = 1208
+                self.boiling_point_k = 3403
+                self.density = 6.77
+                self.has_stable_isotope = True
+                self.discovery = "Carl Auer von Welsbach"
+                self.discovery_year = 1885
+
+            case "neodymium" | "nd" | 60:
+                self.name = "neodymium"
+                self.symbol = "Nd"
+                self.atomic_number = 60
+                self.atomic_mass = 144.24
+                self.electrons_per_shell = (2, 8, 18, 22, 8, 2)
+                self.state = "solid"
+                self.group = None
+                self.period = 6
+                self.melting_point_k = 1297
+                self.boiling_point_k = 3347
+                self.density = 7.01
+                self.has_stable_isotope = True
+                self.discovery = "Carl Auer von Welsbach"
+                self.discovery_year = 1885
+
+            case "promethium" | "pm" | 61: 
+                self.name = "promethium"
+                self.symbol = "Pm"
+                self.atomic_number = 61
+                self.atomic_mass = 145
+                self.electrons_per_shell = (2, 8, 18, 23, 8, 2)
+                self.state = "solid"
+                self.group = None
+                self.period = 6
+                self.melting_point_k = 1315
+                self.boiling_point_k = 3273
+                self.density = 7.26
+                self.has_stable_isotope = False
+                self.discovery = (
+                    "Charles D. Coryell, Jacob A. Marinsky, "
+                    "Lawrence E. Glendenin")
+                self.discovery_year = 1945
+
+            case "samarium" | "sm" | 62:
+                self.name = "samarium"
+                self.symbol = "Sm"
+                self.atomic_number = 62
+                self.atomic_mass = 150.36
+                self.electrons_per_shell = (2, 8, 18, 24, 8, 2)
+                self.state = "solid"
+                self.group = None
+                self.period = 6
+                self.melting_point_k = 1345
+                self.boiling_point_k = 2173
+                self.density = 7.52
+                self.has_stable_isotope = True
+                self.discovery = "Lecoq de Boisbaudran"
+                self.discovery_year = 1879
+
+            case "europium" | "eu" | 63:
+                self.name = "europium"
+                self.symbol = "Eu"
+                self.atomic_number = 63
+                self.atomic_mass = 151.96
+                self.electrons_per_shell = (2, 8, 18, 25, 8, 2)
+                self.state = "solid"
+                self.group = None
+                self.period = 6
+                self.melting_point_k = 1099
+                self.boiling_point_k = 1802
+                self.density = 5.244
+                self.has_stable_isotope = True
+                self.discovery = "Eugène-Anatole Demarçay"
+                self.discovery_year = 1896
+            
+            case "gadolinium" | "gd" | 64:
+                self.name = "gadolinium"
+                self.symbol = "Gd"
+                self.atomic_number = 64
+                self.atomic_mass = 157.25
+                self.electrons_per_shell = (2, 8, 18, 25, 9, 2)
+                self.state = "solid"
+                self.group = None
+                self.period = 6
+                self.melting_point_k = 1585
+                self.boiling_point_k = 3273
+                self.density = 7.9
+                self.has_stable_isotope = True
+                self.discovery = "Jean Charles Galissard de Marignac"
+                self.discovery_year = 1880
+            
+            case "terbium" | "tb" | 65:
+                self.name = "terbium"
+                self.symbol = "Tb"
+                self.atomic_number = 65
+                self.atomic_mass = 158.93
+                self.electrons_per_shell = (2, 8, 18, 27, 8, 2)
+                self.state = "solid"
+                self.group = None
+                self.period = 6
+                self.melting_point_k = 1629
+                self.boiling_point_k = 3396
+                self.density = 8.23
+                self.has_stable_isotope = True
+                self.discovery = "Carl Gustaf Mosander"
+                self.discovery_year = 1843 
 
             case _:
                 raise ElementDoesNotExist(
@@ -827,4 +1186,4 @@ class Element:
 
 
 if __name__ == "__main__":
-    print(Element("cu").get_display_data())
+    print(Element("terBIUM").get_display_data())

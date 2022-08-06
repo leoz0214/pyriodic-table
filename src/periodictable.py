@@ -13,7 +13,7 @@ class PeriodicTable:
         """
         self.elements = []
 
-        for atomic_number in range(1, 21):
+        for atomic_number in range(1, 66):
             element = elements.Element(atomic_number)
             setattr(self, element.name, element)
 
@@ -41,5 +41,6 @@ class PeriodicTable:
 if __name__ == "__main__":
     periodic_table = PeriodicTable()
     print(periodic_table.elements[20-1].get_display_data())
-    print(periodic_table.get_elements_by_state("gas"))
+    print(periodic_table.get_elements_by_state("liquid")[-1])
     print(len(periodic_table))
+    print(len(PeriodicTable()))
