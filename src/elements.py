@@ -94,14 +94,17 @@ class Element:
         
         lines.append(f"Has stable isotope(s): {self.has_stable_isotope}")
 
+        discovery_line = ""
         if self.discovery is not None:
-            lines.append(
-                "Discovered by: {} in {}".format(
-                    self.discovery,
-                    self.discovery_year if self.discovery_year >= 0
-                    else f"{abs(self.discovery_year)} BC"
-                )
-            )
+            discovery_line += f"Discovered by: {self.discovery}"
+
+        if self.discovery_year is not None:
+            discovery_line += " in {}".format(
+                self.discovery_year if self.discovery_year >= 0
+                else f"{abs(self.discovery_year)} BC")
+
+        if discovery_line:
+            lines.append(discovery_line)
 
         return "\n".join(lines)
 
@@ -1175,7 +1178,879 @@ class Element:
                 self.density = 8.23
                 self.has_stable_isotope = True
                 self.discovery = "Carl Gustaf Mosander"
-                self.discovery_year = 1843 
+                self.discovery_year = 1843
+            
+            case "dysprosium" | "dy" | 66:
+                self.name = "dysprosium"
+                self.symbol = "Dy"
+                self.atomic_number = 66
+                self.atomic_mass = 162.5
+                self.electrons_per_shell = (2, 8, 18, 28, 8, 2)
+                self.state = "solid"
+                self.group = None
+                self.period = 6
+                self.melting_point_k = 1680
+                self.boiling_point_k = 2840
+                self.density = 8.54
+                self.has_stable_isotope = True
+                self.discovery = "Lecoq de Boisbaudran"
+                self.discovery_year = 1886
+
+            case "holmium" | "ho" | 67:
+                self.name = "holmium"
+                self.symbol = "Ho"
+                self.atomic_number = 67
+                self.atomic_mass = 164.93
+                self.electrons_per_shell = (2, 8, 18, 29, 8, 2)
+                self.state = "solid"
+                self.group = None
+                self.period = 6
+                self.melting_point_k = 1734
+                self.boiling_point_k = 2873
+                self.density = 8.79
+                self.has_stable_isotope = True
+                self.discovery = (
+                    "Jacques-Louis Soret, Marc Delafontaine, "
+                    "Per Teodor Cleve")
+                self.discovery_year = 1878
+            
+            case "erbium" | "er" | 68:
+                self.name = "erbium"
+                self.symbol = "Er"
+                self.atomic_number = 68
+                self.atomic_mass = 167.26
+                self.electrons_per_shell = (2, 8, 18, 30, 8, 2)
+                self.state = "solid"
+                self.group = None
+                self.period = 6
+                self.melting_point_k = 1802
+                self.boiling_point_k = 3141
+                self.density = 9.066
+                self.has_stable_isotope = True
+                self.discovery = "Carl Gustaf Mosander"
+                self.discovery_year = 1843
+
+            case "thulium" | "tm" | 69:
+                self.name = "thulium"
+                self.symbol = "Tm"
+                self.atomic_number = 69
+                self.atomic_mass = 168.93
+                self.electrons_per_shell = (2, 8, 18, 31, 8, 2)
+                self.state = "solid"
+                self.group = None
+                self.period = 6
+                self.melting_point_k = 1818
+                self.boiling_point_k = 2223
+                self.density = 9.32
+                self.has_stable_isotope = True
+                self.discovery = "Per Teodor Cleve"
+                self.discovery_year = 1879
+
+            case "ytterbium" | "yb" | 70:
+                self.name = "ytterbium"
+                self.symbol = "Yb"
+                self.atomic_number = 70
+                self.atomic_mass = 173.05
+                self.electrons_per_shell = (2, 8, 18, 32, 8, 2)
+                self.state = "solid"
+                self.group = None
+                self.period = 6
+                self.melting_point_k = 1097
+                self.boiling_point_k = 1469
+                self.density = 6.9
+                self.has_stable_isotope = True
+                self.discovery = "Jean Charles Galissard de Marignac"
+                self.discovery_year = 1878
+            
+            case "lutetium" | "lu" | 71:
+                self.name = "lutetium"
+                self.symbol = "Lu"
+                self.atomic_number = 71
+                self.atomic_mass = 174.97
+                self.electrons_per_shell = (2, 8, 18, 32, 9, 2)
+                self.state = "solid"
+                self.group = 3
+                self.period = 6
+                self.melting_point_k = 1925
+                self.boiling_point_k = 3675
+                self.density = 9.841
+                self.has_stable_isotope = True
+                self.discovery = "Carl Auer von Welsbach, Georges Urbain"
+                self.discovery_year = 1906
+            
+            case "hafnium" | "hf" | 72:
+                self.name = "hafnium"
+                self.symbol = "Hf"
+                self.atomic_number = 72
+                self.atomic_mass = 178.49
+                self.electrons_per_shell = (2, 8, 18, 32, 10, 2)
+                self.state = "solid"
+                self.group = 4
+                self.period = 6
+                self.melting_point_k = 2506
+                self.boiling_point_k = 4876
+                self.density = 13.31
+                self.has_stable_isotope = True
+                self.discovery = "Dirk Coster, George de Hevesy"
+                self.discovery_year = 1922
+            
+            case "tantalum" | "ta" | 73:
+                self.name = "tantalum"
+                self.symbol = "Ta"
+                self.atomic_number = 73
+                self.atomic_mass = 180.95
+                self.electrons_per_shell = (2, 8, 18, 32, 11, 2)
+                self.state = "solid"
+                self.group = 5
+                self.period = 6
+                self.melting_point_k = 3290
+                self.boiling_point_k = 5731
+                self.density = 16.69
+                self.has_stable_isotope = True
+                self.discovery = "Anders Gustaf Ekeberg"
+                self.discovery_year = 1802
+            
+            case "tungsten" | "w" | 74:
+                self.name = "tungsten"
+                self.symbol = "W"
+                self.atomic_number = 74
+                self.atomic_mass = 183.84
+                self.electrons_per_shell = (2, 8, 18, 32, 12, 2)
+                self.state = "solid"
+                self.group = 6
+                self.period = 6
+                self.melting_point_k = 3695
+                self.boiling_point_k = 6203
+                self.density = 19.25
+                self.has_stable_isotope = True
+                self.discovery = "Juan José Elhuyar, Fausto Elhuyar"
+                self.discovery_year = 1783
+            
+            case "rhenium" | "re" | 75:
+                self.name = "rhenium"
+                self.symbol = "Re"
+                self.atomic_number = 75
+                self.atomic_mass = 186.21
+                self.electrons_per_shell = (2, 8, 18, 32, 13, 2)
+                self.state = "solid"
+                self.group = 7
+                self.period = 6
+                self.melting_point_k = 3459
+                self.boiling_point_k = 5903
+                self.density = 21.02
+                self.has_stable_isotope = True
+                self.discovery = "Walter Noddack, Ida Noddack, Otto Berg"
+                self.discovery_year = 1925
+            
+            case "osmium" | "os" | 76:
+                self.name = "osmium"
+                self.symbol = "Os"
+                self.atomic_number = 76
+                self.atomic_mass = 190.23
+                self.electrons_per_shell = (2, 8, 18, 32, 14, 2)
+                self.state = "solid"
+                self.group = 8
+                self.period = 6
+                self.melting_point_k = 3306
+                self.boiling_point_k = 5285
+                self.density = 22.59
+                self.has_stable_isotope = True
+                self.discovery = "Smithson Tennant"
+                self.discovery_year = 1803
+            
+            case "iridium" | "ir" | 77:
+                self.name = "iridium"
+                self.symbol = "Ir"
+                self.atomic_number = 77
+                self.atomic_mass = 192.22
+                self.electrons_per_shell = (2, 8, 18, 32, 15, 2)
+                self.state = "solid"
+                self.group = 9
+                self.period = 6
+                self.melting_point_k = 2719
+                self.boiling_point_k = 4403
+                self.density = 22.56
+                self.has_stable_isotope = True
+                self.discovery = "Smithson Tennant"
+                self.discovery_year = 1803
+
+            case "platinum" | "pt" | 78:
+                self.name = "platinum"
+                self.symbol = "Pt"
+                self.atomic_number = 78
+                self.atomic_mass = 195.08
+                self.electrons_per_shell = (2, 8, 18, 32, 17, 1)
+                self.state = "solid"
+                self.group = 10
+                self.period = 6
+                self.melting_point_k = 2041.4
+                self.boiling_point_k = 4098
+                self.density = 21.45
+                self.has_stable_isotope = True
+                self.discovery = "Antonio de Ulloa"
+                self.discovery_year = 1735
+            
+            case "gold" | "au" | 79:
+                self.name = "gold"
+                self.symbol = "Au"
+                self.atomic_number = 79
+                self.atomic_mass = 196.97
+                self.electrons_per_shell = (2, 8, 18, 32, 18, 1)
+                self.state = "solid"
+                self.group = 11
+                self.period = 6
+                self.melting_point_k = 1337.33
+                self.boiling_point_k = 3243
+                self.density = 19.3
+                self.has_stable_isotope = True
+                self.discovery = "Middle East"
+                self.discovery_year = None
+            
+            case "mercury" | "hg" | 80:
+                self.name = "mercury"
+                self.symbol = "Hg"
+                self.atomic_number = 80
+                self.atomic_mass = 200.59
+                self.electrons_per_shell = (2, 8, 18, 32, 18, 2)
+                self.state = "liquid"
+                self.group = 12
+                self.period = 6
+                self.melting_point_k = 234.321
+                self.boiling_point_k = 629.88
+                self.density = 13.534
+                self.has_stable_isotope = True
+                self.discovery = None
+                self.discovery_year = None
+            
+            case "thallium" | "tl" | 81:
+                self.name = "thallium"
+                self.symbol = "Tl"
+                self.atomic_number = 81
+                self.atomic_mass = 204.38
+                self.electrons_per_shell = (2, 8, 18, 32, 18, 3)
+                self.state = "solid"
+                self.group = 13
+                self.period = 6
+                self.melting_point_k = 577
+                self.boiling_point_k = 1746
+                self.density = 11.85
+                self.has_stable_isotope = True
+                self.discovery = "William Crookes"
+                self.discovery_year = 1861
+            
+            case "lead" | "pb" | 82:
+                self.name = "lead"
+                self.symbol = "Pb"
+                self.atomic_number = 82
+                self.atomic_mass = 207.2
+                self.electrons_per_shell = (2, 8, 18, 32, 18, 4)
+                self.state = "solid"
+                self.group = 14
+                self.period = 6
+                self.melting_point_k = 600.61
+                self.boiling_point_k = 2022
+                self.density = 11.34
+                self.has_stable_isotope = True
+                self.discovery = "Middle East"
+                self.discovery_year = None
+
+            case "bismuth" | "bi" | 83:
+                self.name = "bismuth"
+                self.symbol = "Bi"
+                self.atomic_number = 83
+                self.atomic_mass = 208.98
+                self.electrons_per_shell = (2, 8, 18, 32, 18, 5)
+                self.state = "solid"
+                self.group = 15
+                self.period = 6
+                self.melting_point_k = 544.7
+                self.boiling_point_k = 1837
+                self.density = 9.78
+                self.has_stable_isotope = False
+                self.discovery = "Claude François Geoffroy"
+                self.discovery_year = 1753
+            
+            case "polonium" | "po" | 84:
+                self.name = "polonium"
+                self.symbol = "Po"
+                self.atomic_number = 84
+                self.atomic_mass = 209
+                self.electrons_per_shell = (2, 8, 18, 32, 18, 6)
+                self.state = "solid"
+                self.group = 16
+                self.period = 6
+                self.melting_point_k = 527
+                self.boiling_point_k = 1235
+                self.density = 9.196
+                self.has_stable_isotope = False
+                self.discovery = "Marie Curie, Pierre Curie"
+                self.discovery_year = 1898
+            
+            case "astatine" | "at" | 85:
+                self.name = "astatine"
+                self.symbol = "At"
+                self.atomic_number = 85
+                self.atomic_mass = 210
+                self.electrons_per_shell = (2, 8, 18, 32, 18, 7)
+                self.state = None
+                self.group = 17
+                self.period = 6
+                self.melting_point_k = None
+                self.boiling_point_k = None
+                self.density = None
+                self.has_stable_isotope = False
+                self.discovery = (
+                    "Dale R. Corson, Kenneth R. Mackenzie, "
+                    "Emilio Segre")
+                self.discovery_year = 1940
+            
+            case "radon" | "rn" | 86:
+                self.name = "radon"
+                self.symbol = "Rn"
+                self.atomic_number = 86
+                self.atomic_mass = 222
+                self.electrons_per_shell = (2, 8, 18, 32, 18, 8)
+                self.state = "gas"
+                self.group = 18
+                self.period = 6
+                self.melting_point_k = 202
+                self.boiling_point_k = 211.5
+                self.density = 0.00973
+                self.has_stable_isotope = False
+                self.discovery = "Ernest Rutherford, Robert B. Owens"
+                self.discovery_year = 1899
+            
+            case "francium" | "fr" | 87:
+                self.name = "francium"
+                self.symbol = "Fr"
+                self.atomic_number = 87
+                self.atomic_mass = 223
+                self.electrons_per_shell = (2, 8, 18, 32, 18, 8, 1)
+                self.state = "solid"
+                self.group = 1
+                self.period = 7
+                self.melting_point_k = 300
+                self.boiling_point_k = 950
+                self.density = None
+                self.has_stable_isotope = False
+                self.discovery = "Marguerite Perey"
+                self.discovery_year = 1939
+            
+            case "radium" | "ra" | 88:
+                self.name = "radium"
+                self.symbol = "Ra"
+                self.atomic_number = 88
+                self.atomic_mass = 226
+                self.electrons_per_shell = (2, 8, 18, 32, 18, 8, 2)
+                self.state = "solid"
+                self.group = 2
+                self.period = 7
+                self.melting_point_k = 973
+                self.boiling_point_k = 2010
+                self.density = 5.5
+                self.has_stable_isotope = False
+                self.discovery = "Marie Curie, Pierre Curie"
+                self.discovery_year = 1898
+            
+            case "actinium" | "ac" | 89:
+                self.name = "actinium"
+                self.symbol = "Ac"
+                self.atomic_number = 89
+                self.atomic_mass = 227
+                self.electrons_per_shell = (2, 8, 18, 32, 18, 9, 2)
+                self.state = "solid"
+                self.group = None
+                self.period = 7
+                self.melting_point_k = 1323
+                self.boiling_point_k = 3473
+                self.density = 10
+                self.has_stable_isotope = False
+                self.discovery = "Friedrich Oskar Giesel"
+                self.discovery_year = 1902
+            
+            case "thorium" | "th" | 90:
+                self.name = "thorium"
+                self.symbol = "Th"
+                self.atomic_number = 90
+                self.atomic_mass = 232.04
+                self.electrons_per_shell = (2, 8, 18, 32, 18, 10, 2)
+                self.state = "solid"
+                self.group = None
+                self.period = 7
+                self.melting_point_k = 2023
+                self.boiling_point_k = 5061
+                self.density = 11.7
+                self.has_stable_isotope = False
+                self.discovery = "Jöns Jakob Berzelius"
+                self.discovery_year = 1829
+            
+            case "protactinium" | "pa" | 91:
+                self.name = "protactinium"
+                self.symbol = "Pa"
+                self.atomic_number = 91
+                self.atomic_mass = 231.04
+                self.electrons_per_shell = (2, 8, 18, 32, 20, 9, 2)
+                self.state = "solid"
+                self.group = None
+                self.period = 7
+                self.melting_point_k = 1841
+                self.boiling_point_k = 4300
+                self.density = 15.37
+                self.has_stable_isotope = False
+                self.discovery = "Kasimir Fajans, Oswald Helmuth Göhring"
+                self.discovery_year = 1913
+            
+            case "uranium" | "u" | 92:
+                self.name = "uranium"
+                self.symbol = "U"
+                self.atomic_number = 92
+                self.atomic_mass = 238.03
+                self.electrons_per_shell = (2, 8, 18, 32, 21, 9, 2)
+                self.state = "solid"
+                self.group = None
+                self.period = 7
+                self.melting_point_k = 1405.3
+                self.boiling_point_k = 4404
+                self.density = 19.1
+                self.has_stable_isotope = False
+                self.discovery = "Martin Heinrich Klaproth"
+                self.discovery_year = 1789
+            
+            case "neptunium" | "np" | 93:
+                self.name = "neptunium"
+                self.symbol = "Np"
+                self.atomic_number = 93
+                self.atomic_mass = 237
+                self.electrons_per_shell = (2, 8, 18, 32, 22, 9, 2)
+                self.state = "solid"
+                self.group = None
+                self.period = 7
+                self.melting_point_k = 912
+                self.boiling_point_k = None
+                self.density = 20.45
+                self.has_stable_isotope = False
+                self.discovery = "Edwin McMillan, Philip H. Abelson"
+                self.discovery_year = 1940
+            
+            case "plutonium" | "pu" | 94:
+                self.name = "plutonium"
+                self.symbol = "Pu"
+                self.atomic_number = 94
+                self.atomic_mass = 244
+                self.electrons_per_shell = (2, 8, 18, 32, 24, 8, 2)
+                self.state = "solid"
+                self.group = None
+                self.period = 7
+                self.melting_point_k = 912.5
+                self.boiling_point_k = 3505
+                self.density = 19.85
+                self.has_stable_isotope = False
+                self.discovery = (
+                    "Glenn T. Seaborg, Arthur Wahl, Joseph W. Kennedy, "
+                    "Edwin McMillan")
+                self.discovery_year = 1940
+
+            case "americium" | "am" | 95:
+                self.name = "americium"
+                self.symbol = "Am"
+                self.atomic_number = 95
+                self.atomic_mass = 243
+                self.electrons_per_shell = (2, 8, 18, 32, 25, 8, 2)
+                self.state = "solid"
+                self.group = None
+                self.period = 7
+                self.melting_point_k = 1449
+                self.boiling_point_k = None
+                self.density = 12
+                self.has_stable_isotope = False
+                self.discovery = (
+                    "Glenn T. Seaborg, Ralph A. James, Leon O. Morgan, "
+                    "Albert Ghiorso")
+                self.discovery_year = 1944
+            
+            case "curium" | "cm" | 96:
+                self.name = "curium"
+                self.symbol = "Cm"
+                self.atomic_number = 96
+                self.atomic_mass = 247
+                self.electrons_per_shell = (2, 8, 18, 32, 25, 9, 2)
+                self.state = "solid"
+                self.group = None
+                self.period = 7
+                self.melting_point_k = 1613
+                self.boiling_point_k = 3383
+                self.density = 13.51
+                self.has_stable_isotope = False
+                self.discovery = (
+                    "Glenn T. Seaborg, Ralph A. James, Albert Ghiorso")
+                self.discovery_year = 1944
+            
+            case "berkelium" | "bk" | 97:
+                self.name = "berkelium"
+                self.symbol = "Bk"
+                self.atomic_number = 97
+                self.atomic_mass = 247
+                self.electrons_per_shell = (2, 8, 18, 32, 27, 8, 2)
+                self.state = "solid"
+                self.group = None
+                self.period = 7
+                self.melting_point_k = 1259
+                self.boiling_point_k = None
+                self.density = 14.78
+                self.has_stable_isotope = False
+                self.discovery = "Lawrence Berkeley National Laboratory"
+                self.discovery_year = 1949
+            
+            case "californium" | "cf" | 98:
+                self.name = "californium"
+                self.symbol = "Cf"
+                self.atomic_number = 98
+                self.atomic_mass = 251
+                self.electrons_per_shell = (2, 8, 18, 32, 28, 8, 2)
+                self.state = "solid"
+                self.group = None
+                self.period = 7
+                self.melting_point_k = 1173
+                self.boiling_point_k = None
+                self.density = 15.1
+                self.has_stable_isotope = False
+                self.discovery = "Lawrence Berkeley National Laboratory"
+                self.discovery_year = 1950
+            
+            case "einsteinium" | "es" | 99:
+                self.name = "einsteinium"
+                self.symbol = "Es"
+                self.atomic_number = 99
+                self.atomic_mass = 252
+                self.electrons_per_shell = (2, 8, 18, 32, 29, 8, 2)
+                self.state = "solid"
+                self.group = None
+                self.period = 7
+                self.melting_point_k = 1133
+                self.boiling_point_k = None
+                self.density = 8.84
+                self.has_stable_isotope = False
+                self.discovery = "Lawrence Berkeley National Laboratory"
+                self.discovery_year = 1952
+            
+            case "fermium" | "fm" | 100:
+                self.name = "fermium"
+                self.symbol = "Fm"
+                self.atomic_number = 100
+                self.atomic_mass = 257
+                self.electrons_per_shell = (2, 8, 18, 32, 30, 8, 2)
+                self.state = "solid"
+                self.group = None
+                self.period = 7
+                self.melting_point_k = 1800
+                self.boiling_point_k = None
+                self.density = None
+                self.has_stable_isotope = False
+                self.discovery = "Lawrence Berkeley National Laboratory"
+                self.discovery_year = 1952
+            
+            case "mendelevium" | "md" | 101:
+                self.name = "mendelevium"
+                self.symbol = "Md"
+                self.atomic_number = 101
+                self.atomic_mass = 258
+                self.electrons_per_shell = (2, 8, 18, 32, 31, 8, 2)
+                self.state = "solid"
+                self.group = None
+                self.period = 7
+                self.melting_point_k = 1100
+                self.boiling_point_k = None
+                self.density = None
+                self.has_stable_isotope = False
+                self.discovery = "Lawrence Berkeley National Laboratory"
+                self.discovery_year = 1955
+            
+            case "nobelium" | "no" | 102:
+                self.name = "nobelium"
+                self.symbol = "No"
+                self.atomic_number = 102
+                self.atomic_mass = 259
+                self.electrons_per_shell = (2, 8, 18, 32, 32, 8, 2)
+                self.state = "solid"
+                self.group = None
+                self.period = 7
+                self.melting_point_k = 1100
+                self.boiling_point_k = None
+                self.density = None
+                self.has_stable_isotope = False
+                self.discovery = "Joint Institute for Nuclear Research"
+                self.discovery_year = 1966
+            
+            case "lawrencium" | "lr" | 103:
+                self.name = "lawrencium"
+                self.symbol = "Lr"
+                self.atomic_number = 103
+                self.atomic_mass = 266
+                self.electrons_per_shell = (2, 8, 18, 32, 32, 8, 3)
+                self.state = "solid"
+                self.group = 3
+                self.period = 7
+                self.melting_point_k = 1900
+                self.boiling_point_k = None
+                self.density = None
+                self.has_stable_isotope = False
+                self.discovery = (
+                    "Lawrence Berkeley National Laboratory, "
+                    "Joint Institute for Nuclear Research")
+                self.discovery_year = 1961
+            
+            case "rutherfordium" | "rf" | 104:
+                self.name = "rutherfordium"
+                self.symbol = "Rf"
+                self.atomic_number = 104
+                self.atomic_mass = 267
+                self.electrons_per_shell = (2, 8, 18, 32, 32, 10, 2)
+                self.state = "solid"
+                self.group = 4
+                self.period = 7
+                self.melting_point_k = None
+                self.boiling_point_k = None
+                self.density = None
+                self.has_stable_isotope = False
+                self.discovery = "Joint Institute for Nuclear Research"
+                self.discovery_year = 1964
+            
+            case "dubnium" | "db" | 105:
+                self.name = "dubnium"
+                self.symbol = "Db"
+                self.atomic_number = 105
+                self.atomic_mass = 268
+                self.electrons_per_shell = (2, 8, 18, 32, 32, 11, 2)
+                self.state = "solid"
+                self.group = 5
+                self.period = 7
+                self.melting_point_k = None
+                self.boiling_point_k = None
+                self.density = None
+                self.has_stable_isotope = False
+                self.discovery = (
+                    "Lawrence Berkeley National Laboratory, "
+                    "Joint Institute for Nuclear Research")
+                self.discovery_year = 1970
+            
+            case "seaborgium" | "sg" | 106:
+                self.name = "seaborgium"
+                self.symbol = "Sg"
+                self.atomic_number = 106
+                self.atomic_mass = 269
+                self.electrons_per_shell = (2, 8, 18, 32, 32, 12, 2)
+                self.state = "solid"
+                self.group = 6
+                self.period = 7
+                self.melting_point_k = None
+                self.boiling_point_k = None
+                self.density = None
+                self.has_stable_isotope = False
+                self.discovery = "Lawrence Berkeley National Laboratory"
+                self.discovery_year = 1974
+            
+            case "bohrium" | "bh" | 107:
+                self.name = "bohrium"
+                self.symbol = "Bh"
+                self.atomic_number = 107
+                self.atomic_mass = 270
+                self.electrons_per_shell = (2, 8, 18, 32, 32, 13, 2)
+                self.state = "solid"
+                self.group = 7
+                self.period = 7
+                self.melting_point_k = None
+                self.boiling_point_k = None
+                self.density = None
+                self.has_stable_isotope = False
+                self.discovery = "Gesellschaft für Schwerionenforschung"
+                self.discovery_year = 1981
+            
+            case "hassium" | "hs" | 108:
+                self.name = "hassium"
+                self.symbol = "Hs"
+                self.atomic_number = 108
+                self.atomic_mass = 269
+                self.electrons_per_shell = (2, 8, 18, 32, 32, 14, 2)
+                self.state = "solid"
+                self.group = 8
+                self.period = 7
+                self.melting_point_k = None
+                self.boiling_point_k = None
+                self.density = None
+                self.has_stable_isotope = False
+                self.discovery = "Gesellschaft für Schwerionenforschung"
+                self.discovery_year = 1984
+
+            case "meitnerium" | "mt" | 109:
+                self.name = "meitnerium"
+                self.symbol = "Mt"
+                self.atomic_number = 109
+                self.atomic_mass = 278
+                self.electrons_per_shell = (2, 8, 18, 32, 32, 15, 2)
+                self.state = "solid"
+                self.group = 9
+                self.period = 7
+                self.melting_point_k = None
+                self.boiling_point_k = None
+                self.density = None
+                self.has_stable_isotope = False
+                self.discovery = "Gesellschaft für Schwerionenforschung"
+                self.discovery_year = 1982
+
+            case "darmstadtium" | "ds" | 110:
+                self.name = "darmstadtium"
+                self.symbol = "Ds"
+                self.atomic_number = 110
+                self.atomic_mass = 281
+                self.electrons_per_shell = (2, 8, 18, 32, 32, 16, 2)
+                self.state = "solid"
+                self.group = 10
+                self.period = 7
+                self.melting_point_k = None
+                self.boiling_point_k = None
+                self.density = None
+                self.has_stable_isotope = False
+                self.discovery = "Gesellschaft für Schwerionenforschung"
+                self.discovery_year = 1994
+            
+            case "roentgenium" | "rg" | 111:
+                self.name = "roentgenium"
+                self.symbol = "Rg"
+                self.atomic_number = 111
+                self.atomic_mass = 282
+                self.electrons_per_shell = (2, 8, 18, 32, 32, 17, 2)
+                self.state = "solid"
+                self.group = 11
+                self.period = 7
+                self.melting_point_k = None
+                self.boiling_point_k = None
+                self.density = None
+                self.has_stable_isotope = False
+                self.discovery = "Gesellschaft für Schwerionenforschung"
+                self.discovery_year = 1994
+            
+            case "copernicium" | "cn" | 112:
+                self.name = "copernicium"
+                self.symbol = "Cn"
+                self.atomic_number = 112
+                self.atomic_mass = 285
+                self.electrons_per_shell = (2, 8, 18, 32, 32, 18, 2)
+                self.state = None
+                self.group = 12
+                self.period = 7
+                self.melting_point_k = None
+                self.boiling_point_k = None
+                self.density = None
+                self.has_stable_isotope = False
+                self.discovery = "Gesellschaft für Schwerionenforschung"
+                self.discovery_year = 1996
+
+            case "nihonium" | "nh" | 113:
+                self.name = "nihonium"
+                self.symbol = "Nh"
+                self.atomic_number = 113
+                self.atomic_mass = 286
+                self.electrons_per_shell = (2, 8, 18, 32, 32, 18, 3)
+                self.state = "solid"
+                self.group = 13
+                self.period = 7
+                self.melting_point_k = None
+                self.boiling_point_k = None
+                self.density = None
+                self.has_stable_isotope = False
+                self.discovery = "Riken"
+                self.discovery_year = 2004
+            
+            case "flerovium" | "fl" | 114:
+                self.name = "flerovium"
+                self.symbol = "Fl"
+                self.atomic_number = 114
+                self.atomic_mass = 289
+                self.electrons_per_shell = (2, 8, 18, 32, 32, 18, 4)
+                self.state = None
+                self.group = 14
+                self.period = 7
+                self.melting_point_k = None
+                self.boiling_point_k = None
+                self.density = None
+                self.has_stable_isotope = False
+                self.discovery = (
+                    "Joint Institute for Nuclear Research, "
+                    "Lawrence Livermore National Laboratory")
+                self.discovery_year = 1998
+            
+            case "moscovium" | "mc" | 115:
+                self.name = "moscovium"
+                self.symbol = "Mc"
+                self.atomic_number = 115
+                self.atomic_mass = 290
+                self.electrons_per_shell = (2, 8, 18, 32, 32, 18, 5)
+                self.state = "solid"
+                self.group = 15
+                self.period = 7
+                self.melting_point_k = None
+                self.boiling_point_k = None
+                self.density = None
+                self.has_stable_isotope = False
+                self.discovery = (
+                    "Joint Institute for Nuclear Research, "
+                    "Lawrence Livermore National Laboratory")
+                self.discovery_year = 2003
+            
+            case "livermorium" | "lv" | 116:
+                self.name = "livermorium"
+                self.symbol = "Lv"
+                self.atomic_number = 116
+                self.atomic_mass = 293
+                self.electrons_per_shell = (2, 8, 18, 32, 32, 18, 6)
+                self.state = "solid"
+                self.group = 16
+                self.period = 7
+                self.melting_point_k = None
+                self.boiling_point_k = None
+                self.density = None
+                self.has_stable_isotope = False
+                self.discovery = (
+                    "Joint Institute for Nuclear Research, "
+                    "Lawrence Livermore National Laboratory")
+                self.discovery_year = 2000
+            
+            case "tennessine" | "ts" | 117:
+                self.name = "tennessine"
+                self.symbol = "Ts"
+                self.atomic_number = 117
+                self.atomic_mass = 294
+                self.electrons_per_shell = (2, 8, 18, 32, 32, 18, 7)
+                self.state = "solid"
+                self.group = 17
+                self.period = 7
+                self.melting_point_k = None
+                self.boiling_point_k = None
+                self.density = None
+                self.has_stable_isotope = False
+                self.discovery = (
+                    "Joint Institute for Nuclear Research, "
+                    "Lawrence Livermore National Laboratory, "
+                    "Vanderbilt University, Oak Ridge National Laboratory")
+                self.discovery_year = 2009
+
+            case "oganesson" | "og" | 118:
+                self.name = "oganesson"
+                self.symbol = "Og"
+                self.atomic_number = 118
+                self.atomic_mass = 294
+                self.electrons_per_shell = (2, 8, 18, 32, 32, 18, 8)
+                self.state = "solid"
+                self.group = 18
+                self.period = 7
+                self.melting_point_k = None
+                self.boiling_point_k = None
+                self.density = None
+                self.has_stable_isotope = False
+                self.discovery = (
+                    "Joint Institute for Nuclear Research, "
+                    "Lawrence Livermore National Laboratory")
+                self.discovery_year = 2002
 
             case _:
                 raise ElementDoesNotExist(
@@ -1185,4 +2060,5 @@ class Element:
 
 
 if __name__ == "__main__":
-    print(Element("terBIUM").get_display_data())
+    for i in range(1, 119):
+        assert Element(i).atomic_number == Element(i).protons == Element(i).electrons
