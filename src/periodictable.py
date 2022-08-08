@@ -19,6 +19,13 @@ class PeriodicTable:
         """
         self._elements = []
 
+        self._alkali_metals = []
+        self._alkaline_earth_metals = []
+        self._lanthanides = []
+        self._actinides = []
+        self._halogens = []
+        self._noble_gases = []
+
         for atomic_number in range(1, NUMBER_OF_ELEMENTS + 1):
             element = chemelements.Element(atomic_number)
 
@@ -27,6 +34,20 @@ class PeriodicTable:
             setattr(self, element.symbol.title(), element)
 
             self._elements.append(element)
+
+            if element.group == 1 and element.atomic_number != 1:
+                self._alkali_metals.append(element)
+            elif element.group == 2:
+                self._alkaline_earth_metals.append(element)
+            elif element.group == 17:
+                self._halogens.append(element)
+            elif element.group == 18:
+                self._noble_gases.append(element)
+
+            if 57 <= element.atomic_number <= 71:
+                self._lanthanides.append(element)
+            elif 89 <= element.atomic_number <= 103:
+                self._actinides.append(element)
     
     def get_element_by_name(self, name: str) -> chemelements.Element:
         """
@@ -122,18 +143,105 @@ class PeriodicTable:
     def get_elements_by_state(self, state: str) -> list[chemelements.Element]:
         """
         Finds elements at a particular state at room temperature.
-        State must either be 'solid', 'liquid' or 'gas'
+        State must either be 'solid', 'liquid' or 'gas',
+        or their corresponding shorthands - 's', 'l', 'g'.
+        Case-insensitive
         """
+        state = state.lower()
+
+        # Accepts shorthand for each of the 3 states.
+        state = {"s": "solid", "l": "liquid", "g": "gas"}.get(state, state)
+
         if state not in ("solid", "liquid", "gas"):
             raise ValueError(
                 "State must either be 'solid', 'liquid' or 'gas'")
 
         return [
             element for element in self if element.state == state]
+    
+    def get_elements_by_group(
+        self, group: int | None) -> list[chemelements.Element]:
+        """
+        Finds elements in a particular Group (column).
+        If 'group' is passed as None, all the elements not in
+        a group are returned.
+        """
+        return [element for element in self if element.group == group]
+
+    def get_elements_by_period(
+        self, period: int) -> list[chemelements.Element]:
+        """
+        Finds elements in a particular Period (row).
+        """
+        return [element for element in self if element.period == period]
+    
+    def _get_elements_by_temperature(func: Callable) -> Callable:
+        def wrap(
+            self, minimum: int | float, maximum: int | float, unit: str = "k"
+        ) -> list[chemelements.Element]:
+            unit = unit.lower()
+
+            if unit not in ("k", "c", "f"):
+                raise ValueError("Unit must either be 'k', 'f' or 'c'")
+            
+            elements = []
+            target_attribute = func()
+
+            for element in self:
+                # Gets required melting/boiling point in required unit.
+                temperature = getattr(element, f"{target_attribute}_{unit}")
+
+                if temperature and minimum <= temperature <= maximum:
+                    elements.append(element)  
+
+            return elements
+        return wrap
+
+    @_get_elements_by_temperature
+    def get_elements_by_melting_point():
+        """
+        Finds elements with a melting point in a given range.
+        Unit must either be 'k' (kelvin), 'c' (celsius), or
+        'f' (fahrenheit). Case-insensitive.
+        """
+        return "melting_point"
+    
+    @_get_elements_by_temperature
+    def get_elements_by_boiling_point():
+        """
+        Finds elements with a boiling point in a given range.
+        Unit must either be 'k' (kelvin), 'c' (celsius), or
+        'f' (fahrenheit). Case-insensitive.
+        """
+        return "boiling_point"
         
     @property
     def elements(self) -> list[chemelements.Element]:
         return self._elements
+    
+    @property
+    def alkali_metals(self) -> list[chemelements.Element]:
+        return self._alkali_metals
+    
+    @property
+    def alkaline_earth_metals(self) -> list[chemelements.Element]:
+        return self._alkaline_earth_metals
+    
+    @property
+    def lanthanides(self) -> list[chemelements.Element]:
+        return self._lanthanides
+    
+    @property
+    def actinides(self) -> list[chemelements.Element]:
+        return self._actinides
+    
+    @property
+    def halogens(self) -> list[chemelements.Element]:
+        return self._halogens
+    
+    @property
+    def noble_gases(self) -> list[chemelements.Element]:
+        return self._noble_gases
 
     def __len__(self) -> int:
         """
@@ -156,5 +264,9 @@ class PeriodicTable:
 
 
 if __name__ == "__main__":
-    periodic_table = PeriodicTable()
-    print(periodic_table.get_elements_by_atomic_number(1, 10, 2))
+    pt = PeriodicTable()
+    print(pt.francium.melting_point_c)
+    print(pt.caesium.melting_point_c)
+    print(pt.gallium.melting_point_c)
+    for i in range(9):
+        print(PeriodicTable().get_elements_by_boiling_point(0, 1000, "k"))
