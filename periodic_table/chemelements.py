@@ -141,6 +141,20 @@ class Element:
             return False
         
         return self.atomic_number >= element.atomic_number
+    
+    def asdict(self) -> dict:
+        """
+        Returns a dictionary of the element data.
+        """
+        return dict(self.__dict__) | {
+            # Additional element data (properties).
+            "protons": self.protons,
+            "electrons": self.electrons,
+            "melting_point_c": self.melting_point_c,
+            "melting_point_f": self.melting_point_f,
+            "boiling_point_c": self.boiling_point_c,
+            "boiling_point_f": self.boiling_point_f
+        }
       
     def __init__(self, info: str | int) -> None:
         """

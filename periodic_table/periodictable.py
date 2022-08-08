@@ -324,3 +324,16 @@ class PeriodicTable:
         return any(
             lower == element.name or title == element.symbol
             for element in self)
+
+    def asdict(self, element_data_also_dict: bool = True) -> dict:
+        """
+        Returns a dictionary of the periodic table data,
+        including element data if specified.
+        """
+        return {
+            element.name: (
+                element if not element_data_also_dict else
+                element.asdict()
+            )
+            for element in self 
+        }
