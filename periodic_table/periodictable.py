@@ -300,7 +300,27 @@ class PeriodicTable:
         Returns the elements in reverse order.
         """
         return self._elements[::-1]
-
-
-if __name__ == "__main__":
-    pass
+    
+    def __repr__(self) -> str:
+        """
+        Displays basic element data as a string.
+        """
+        return " | ".join(
+            ["{} {} ({})".format(
+            element.atomic_number, element.name, element.symbol)
+            for element in self]
+        )
+    
+    def __contains__(self, info: str) -> bool:
+        """
+        Checks if name/symbol matches an existing element.
+        Case-insensitive.
+        """
+        # For name check.
+        lower = info.lower()
+        # For symbol check.
+        title = info.title()
+    
+        return any(
+            lower == element.name or title == element.symbol
+            for element in self)

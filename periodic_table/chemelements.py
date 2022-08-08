@@ -111,7 +111,37 @@ class Element:
                 )
 
         return "\n".join(lines)
-
+    
+    def __eq__(self, element) -> bool:
+        """
+        Checks if two elements instances are the same (atomic number).
+        Opposite is != (not equal)
+        """
+        if not isinstance(element, Element):
+            raise False
+        
+        return self.atomic_number == element.atomic_number
+    
+    def __gt__(self, element) -> bool:
+        """
+        Checks if the element has a greater atomic number than another.
+        Opposite is < (less than)
+        """
+        if not isinstance(element, Element):
+            return False
+        
+        return self.atomic_number > element.atomic_number
+    
+    def __ge__(self, element) -> bool:
+        """
+        Checks if the element has a greater atomic number than
+        or equal to another. Opposite is <= (less than or equal)
+        """
+        if not isinstance(element, Element):
+            return False
+        
+        return self.atomic_number >= element.atomic_number
+      
     def __init__(self, info: str | int) -> None:
         """
         The 'info' parameter allows for 3 ways to identify an element:
@@ -2060,7 +2090,3 @@ class Element:
                     ("Info does not match the name, symbol or atomic number "
                     f"of any element: {info}")
                 )
-    
-
-
-print(Element(1).melting_point_f)
