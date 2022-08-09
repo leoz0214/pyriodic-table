@@ -120,14 +120,13 @@ class Element:
         Opposite is != (not equal)
         """
         if not isinstance(element, Element):
-            raise False
+            return False
         
         return self.atomic_number == element.atomic_number
     
     def __gt__(self, element) -> bool:
         """
         Checks if the element has a greater atomic number than another.
-        Opposite is < (less than)
         """
         if not isinstance(element, Element):
             return False
@@ -137,12 +136,31 @@ class Element:
     def __ge__(self, element) -> bool:
         """
         Checks if the element has a greater atomic number than
-        or equal to another. Opposite is <= (less than or equal)
+        or equal to another.
         """
         if not isinstance(element, Element):
             return False
         
         return self.atomic_number >= element.atomic_number
+
+    def __lt__(self, element) -> bool:
+        """
+        Checks if the element has a lower atomic number than another.
+        """
+        if not isinstance(element, Element):
+            return False
+        
+        return self.atomic_number < element.atomic_number
+    
+    def __ge__(self, element) -> bool:
+        """
+        Checks if the element has a lower atomic number than
+        or equal to another.
+        """
+        if not isinstance(element, Element):
+            return False
+        
+        return self.atomic_number <= element.atomic_number
     
     def asdict(self) -> dict:
         """
