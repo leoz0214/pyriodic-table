@@ -1,10 +1,14 @@
-periodic_table is a simple Python library which aims to achieve the following:
+# Introduction
+
+`periodic_table` is a simple Python library which aims to achieve the following:
 
 - Provide insightful data (as accurate as possible) on the 118 chemical elements discovered to date,
-  starting with hydrogen, all the way to the super-heavy oganesson!
+starting with hydrogen, all the way to the super-heavy oganesson!
 - Make this data easily accessible, in an organised manner.
 - Allow easy identification of elements to access their data, through multiple methods.
 - Be user-friendly and easy to use.
+
+# About the data
 
 Element data has been manually obtained and entered carefully.
 
