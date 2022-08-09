@@ -35,6 +35,7 @@ class PeriodicTable:
         for atomic_number in range(1, NUMBER_OF_ELEMENTS + 1):
             element = chemelements.Element(atomic_number)
 
+            # Multiple ways of accessing an element as an attribute.
             setattr(self, element.name, element)
             setattr(self, element.symbol.lower(), element)
             setattr(self, element.symbol.title(), element)
@@ -67,7 +68,7 @@ class PeriodicTable:
     
     def get_element_by_name(self, name: str) -> chemelements.Element:
         """
-        Finds element by its name. Case-insensitive.
+        Finds an element by its name. Case-insensitive.
         """
         name = name.lower()
 
@@ -91,14 +92,14 @@ class PeriodicTable:
         lambda x: len(x) < 4;
         [tin] would be returned
 
-        Note that the element name is passed into the function.
+        Note that the names of the elements are passed into the function.
         """
         return [element for element in self if function_check(element.name)]
     
     def get_element_by_atomic_number(
         self, atomic_number: int) -> chemelements.Element:
         """
-        Finds element by its atomic number (number of protons).
+        Finds an element by its atomic number (number of protons).
         """
         if 1 <= atomic_number <= NUMBER_OF_ELEMENTS:
             return self._elements[atomic_number - 1]
@@ -110,8 +111,9 @@ class PeriodicTable:
         self, start: int, stop: int, step: int = 1
         ) -> list[chemelements.Element]:
         """
-        Finds elements which have an atomic number within a particular range.
-        Works just like the range() function,
+        Finds the elements which have an atomic number
+        within a particular range.
+        Works similarly to the range() function,
         so the 'stop' atomic number is not included.
         """
         if start < 1:
@@ -128,7 +130,7 @@ class PeriodicTable:
     
     def get_element_by_symbol(self, symbol: str) -> chemelements.Element:
         """
-        Finds element by its symbol. Case-insensitive.
+        Finds an element by its symbol. Case-insensitive.
         """
         symbol = symbol.title()
         
@@ -141,7 +143,7 @@ class PeriodicTable:
     def get_elements_by_symbol(
         self, function_check: Callable) -> list[chemelements.Element]:
         """
-        Finds elements whose symbol evaluates to True
+        Finds the elements whose symbol evaluates to True
         when passed into a function.
 
         For example, given the following function:
@@ -151,16 +153,17 @@ class PeriodicTable:
         phosphorus,sulfur, potassium, vanadium, yttrium,
         iodine, tungsten, uranium] would be returned.
 
-        Note that the element symbol is passed into the function.
+        Note that the symbols of the elements
+        are passed into the function.
         """
         return [element for element in self if function_check(element.symbol)]
     
     def get_elements_by_state(self, state: str) -> list[chemelements.Element]:
         """
-        Finds elements at a particular state at room temperature.
+        Finds the elements at a particular state at room temperature.
         State must either be 'solid', 'liquid' or 'gas',
         or their corresponding shorthands - 's', 'l', 'g'.
-        Case-insensitive
+        Case-insensitive.
         """
         state = state.lower()
 
@@ -177,20 +180,22 @@ class PeriodicTable:
     def get_elements_by_group(
         self, group: int | None) -> list[chemelements.Element]:
         """
-        Finds elements in a particular Group (column).
+        Finds the elements in a particular Group (column).
         If 'group' is passed as None, all the elements not in
-        a group are returned.
+        a group are returned, such as some of the lanthanides.
         """
         return [element for element in self if element.group == group]
 
     def get_elements_by_period(
         self, period: int) -> list[chemelements.Element]:
         """
-        Finds elements in a particular Period (row).
+        Finds the elements in a particular Period (row).
         """
         return [element for element in self if element.period == period]
     
     def _get_elements_by_temperature(func: Callable) -> Callable:
+        # Decorator function supporting both getting elements
+        # by melting/boiling point.
         def wrap(
             self, minimum: int | float, maximum: int | float, unit: str = "k"
         ) -> list[chemelements.Element]:
@@ -215,18 +220,20 @@ class PeriodicTable:
     @_get_elements_by_temperature
     def get_elements_by_melting_point():
         """
-        Finds elements with a melting point in a given range.
-        Unit must either be 'k' (kelvin), 'c' (celsius), or
-        'f' (fahrenheit). Case-insensitive.
+        Finds the elements with a melting point in a given range.
+        The temperature unit must either be 
+        'k' (kelvin), 'c' (celsius), or 'f' (fahrenheit).
+        Case-insensitive.
         """
         return "melting_point"
     
     @_get_elements_by_temperature
     def get_elements_by_boiling_point():
         """
-        Finds elements with a boiling point in a given range.
-        Unit must either be 'k' (kelvin), 'c' (celsius), or
-        'f' (fahrenheit). Case-insensitive.
+        Finds the elements with a boiling point in a given range.
+        The temperature unit must either be 
+        'k' (kelvin), 'c' (celsius), or 'f' (fahrenheit).
+        Case-insensitive.
         """
         return "boiling_point"
     
@@ -234,7 +241,7 @@ class PeriodicTable:
         self, minimum: int | float, maximum: int | float
     ) -> list[chemelements.Element]:
         """
-        Finds elements with a density in a given range.
+        Finds the elements with a density in a given range.
         Unit = g/cm^3
         """
         return [
@@ -244,7 +251,7 @@ class PeriodicTable:
     def get_elements_by_discovery_year(
         self, minimum: int, maximum: int) -> list[chemelements.Element]:
         """
-        Finds elements discovered within a given time period.
+        Finds the elements discovered within a given time period.
         For BC years, use negative integers.
         For example, for 5000 BC, use -5000
         """
@@ -318,7 +325,8 @@ class PeriodicTable:
     
     def __repr__(self) -> str:
         """
-        Displays basic element data as a string.
+        Displays basic element data as a string: 
+        atomic number, name, symbol.
         """
         return " | ".join(
             ["{} {} ({})".format(
@@ -376,7 +384,7 @@ class PeriodicTable:
             }
 
         # Converts all elements' data into dicts once
-        # for use multiple times below.
+        # for repeated usage below.
         element_dicts = {element.name: element.asdict() for element in self}
 
         return {
@@ -417,7 +425,7 @@ class PeriodicTable:
         self, elements_only: bool = False,
         indent: int | None = None, compact: bool = False) -> str:
         """
-        Returns periodic table data in JSON format.
+        Returns periodic table data as a JSON string.
         If 'elements_only' is passed as True, only JSON
         data for the elements will be returned, not the different
         categories of elements alongside.
