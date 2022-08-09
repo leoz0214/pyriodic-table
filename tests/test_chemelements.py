@@ -39,7 +39,17 @@ class TestChemElements(unittest.TestCase):
             element = Element(atomic_number)
             self.assertEqual(element.atomic_number, atomic_number)
             self.assertEqual(element.name, str(element))
-
+    
+    def test_comparisons(self):
+        self.assertEqual(Element("NEON"), Element("ne"))
+        self.assertNotEqual(Element(1), Element(2))
+        self.assertGreater(Element("mn"), Element("MG"))
+        self.assertGreaterEqual(Element(2), Element("HE"))
+        self.assertGreaterEqual(Element("bARIUm"), Element("Tc"))
+        self.assertLess(Element("terbium"), Element(82))
+        self.assertLessEqual(Element("AU"), Element("gold"))
+        self.assertLessEqual(Element("astatine"), Element("ACTINIUM"))
+        self.assertNotEqual(Element(2), "He")
 
 if __name__ == "__main__":
     unittest.main()
