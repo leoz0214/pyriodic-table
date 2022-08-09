@@ -152,7 +152,7 @@ class Element:
         
         return self.atomic_number < element.atomic_number
     
-    def __ge__(self, element) -> bool:
+    def __le__(self, element) -> bool:
         """
         Checks if the element has a lower atomic number than
         or equal to another.
