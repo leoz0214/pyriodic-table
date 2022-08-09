@@ -325,15 +325,66 @@ class PeriodicTable:
             lower == element.name or title == element.symbol
             for element in self)
 
-    def asdict(self, element_data_also_dict: bool = True) -> dict:
+    def asdict(
+        self, elements_to_dict: bool = True, elements_only: bool = False
+        ) -> dict:
         """
-        Returns a dictionary of the periodic table data,
-        including element data if specified.
+        Returns a dictionary of the periodic table data; 
+        also casting element data into dictionaries if specified.
+        If 'elements_only' is passed as True, only a dictionary
+        of the elements will be returned, not the different
+        categories of elements alongside.
         """
+        if elements_only:
+            
+            if not elements_to_dict:
+                return {element.name: element for element in self}
+            
+            return {element.name: element.asdict() for element in self}
+
+        if not elements_to_dict:
+            return {
+                "elements": {element.name: element for element in self},
+                "elements_with_stable_isotope":
+                self._elements_with_stable_isotope,
+                "elements_without_stable_isotope":
+                self.elements_without_stable_isotope,
+                "alkali_metals": self._alkali_metals,
+                "alkaline_earth_metals": self._alkaline_earth_metals,
+                "lanthanides": self._lanthanides,
+                "actinides": self._actinides,
+                "halogens": self._halogens,
+                "noble_gases": self._noble_gases
+            }
+
+        # Converts all elements' data into dicts once
+        # for use multiple times below.
+        element_dicts = {element.name: element.asdict() for element in self}
+
         return {
-            element.name: (
-                element if not element_data_also_dict else
-                element.asdict()
-            )
-            for element in self 
+            "elements": element_dicts,
+            "elements_with_stable_isotope": [
+                element_dicts[element.name]
+                for element in self._elements_with_stable_isotope],
+            "elements_without_stable_isotope": [
+                element_dicts[element.name]
+                for element in self._elements_without_stable_isotope],
+            "alkali_metals": [
+                element_dicts[element.name]
+                for element in self._alkali_metals],
+            "alkaline_earth_metals": [
+                element_dicts[element.name]
+                for element in self._alkaline_earth_metals],
+            "lanthanides": [
+                element_dicts[element.name]
+                for element in self._lanthanides],
+            "actinides": [
+                element_dicts[element.name]
+                for element in self._actinides],
+            "halogens": [
+                element_dicts[element.name]
+                for element in self._halogens],
+            "noble_gases": [
+                element_dicts[element.name]
+                for element in self._noble_gases]
         }
