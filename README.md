@@ -1,4 +1,4 @@
-# Introduction
+# --- pyriodic_table ---
 
 `pyriodic_table` is a simple Python library which aims to achieve the following:
 
@@ -8,7 +8,7 @@ starting with hydrogen, all the way to the super-heavy oganesson!
 - Allow easy identification of elements to access their data, through multiple methods.
 - Be user-friendly and easy to use.
 
-# About the data
+## About the data
 
 Element data has been manually obtained and entered carefully.
 
