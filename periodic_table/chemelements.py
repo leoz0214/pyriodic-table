@@ -1,3 +1,5 @@
+import json
+
 from exceptions import ElementDoesNotExist
 
 
@@ -155,7 +157,21 @@ class Element:
             "boiling_point_c": self.boiling_point_c,
             "boiling_point_f": self.boiling_point_f
         }
-      
+    
+    def to_json(
+        self, indent: int | None = None, compact: bool = False) -> str:
+        """
+        Returns element data in JSON form.
+        'compact' to True removes all unnecessary whitespace in
+        the JSON string.
+        """
+        dict_data = self.asdict()
+
+        if compact:
+            return json.dumps(dict_data, indent=indent, separators=(",", ":"))
+
+        return json.dumps(dict_data, indent=indent)
+
     def __init__(self, info: str | int) -> None:
         """
         The 'info' parameter allows for 3 ways to identify an element:
@@ -174,7 +190,6 @@ class Element:
                 f"not type <{str(type(info)).split()[1]}")
             )
 
-        # Information on units:
         # For melting point and boiling point, the three temperature units
         # Kelvin, Celsius and Fahrenheit are all supported.
         # Density is in g/cm^3
@@ -192,6 +207,7 @@ class Element:
                 self.melting_point_k = 13.99
                 self.boiling_point_k = 20.271
                 self.density = 0.00008988
+                self.natural = True
                 self.has_stable_isotope = True
                 self.discovery = "Henry Cavendish"
                 self.discovery_year = 1766
@@ -208,6 +224,7 @@ class Element:
                 self.melting_point_k = 0.95
                 self.boiling_point_k = 4.222
                 self.density = 0.0001786
+                self.natural = True
                 self.has_stable_isotope = True
                 self.discovery = "Pierre Janssen, Norman Lockyer"
                 self.discovery_year = 1868
@@ -224,6 +241,7 @@ class Element:
                 self.melting_point_k = 453.65
                 self.boiling_point_k = 1603
                 self.density = 0.534
+                self.natural = True
                 self.has_stable_isotope = True
                 self.discovery = "Johan August Arfwedson"
                 self.discovery_year = 1817
@@ -240,6 +258,7 @@ class Element:
                 self.melting_point_k = 1560
                 self.boiling_point_k = 2742
                 self.density = 1.85
+                self.natural = True
                 self.has_stable_isotope = True
                 self.discovery = "Louis Nicolas Vauquelin"
                 self.discovery_year = 1798
@@ -256,6 +275,7 @@ class Element:
                 self.melting_point_k = 2349
                 self.boiling_point_k = 4200
                 self.density = 2.34
+                self.natural = True
                 self.has_stable_isotope = True
                 self.discovery = (
                     "Joseph Louis Gay-Lussac, Louis Jacques Thénard")
@@ -273,6 +293,7 @@ class Element:
                 self.melting_point_k = 3823
                 self.boiling_point_k = 5100
                 self.density = 2.27
+                self.natural = True
                 self.has_stable_isotope = True
                 self.discovery = "Antoine Lavoisier"
                 self.discovery_year = 1789
@@ -289,6 +310,7 @@ class Element:
                 self.melting_point_k = 63.23
                 self.boiling_point_k = 77.355
                 self.density = 0.00125
+                self.natural = True
                 self.has_stable_isotope = True
                 self.discovery = "Daniel Rutherford"
                 self.discovery_year = 1772
@@ -305,6 +327,7 @@ class Element:
                 self.melting_point_k = 54.36
                 self.boiling_point_k = 90.188
                 self.density = 0.001429
+                self.natural = True
                 self.has_stable_isotope = True
                 self.discovery = "Carl Wilhelm Scheele"
                 self.discovery_year = 1771
@@ -321,6 +344,7 @@ class Element:
                 self.melting_point_k = 53.48
                 self.boiling_point_k = 85.03
                 self.density = 0.001696
+                self.natural = True
                 self.has_stable_isotope = True
                 self.discovery = "André-Marie Ampère"
                 self.discovery_year = 1810
@@ -337,6 +361,7 @@ class Element:
                 self.melting_point_k = 24.56
                 self.boiling_point_k = 27.104
                 self.density = 0.0009002
+                self.natural = True
                 self.has_stable_isotope = True
                 self.discovery = "William Ramsay, Morris Travers"
                 self.discovery_year = 1898
@@ -353,6 +378,7 @@ class Element:
                 self.melting_point_k = 370.944
                 self.boiling_point_k = 1156.09
                 self.density = 0.968
+                self.natural = True
                 self.has_stable_isotope = True
                 self.discovery = "Humphry Davy"
                 self.discovery_year = 1807 
@@ -369,6 +395,7 @@ class Element:
                 self.melting_point_k = 923
                 self.boiling_point_k = 1363
                 self.density = 1.738
+                self.natural = True
                 self.has_stable_isotope = True
                 self.discovery = "Joseph Black"
                 self.discovery_year = 1755
@@ -385,6 +412,7 @@ class Element:
                 self.melting_point_k = 933.47
                 self.boiling_point_k = 2743
                 self.density = 2.7
+                self.natural = True
                 self.has_stable_isotope = True
                 self.discovery = "Hans Christian Ørsted"
                 self.discovery_year = 1824
@@ -401,6 +429,7 @@ class Element:
                 self.melting_point_k = 1414
                 self.boiling_point_k = 3538
                 self.density = 2.329
+                self.natural = True
                 self.has_stable_isotope = True
                 self.discovery = "Jöns Jacob Berzelius"
                 self.discovery_year = 1823
@@ -417,6 +446,7 @@ class Element:
                 self.melting_point_k = 317.3
                 self.boiling_point_k = 553.7
                 self.density = 1.823
+                self.natural = True
                 self.has_stable_isotope = True
                 self.discovery = "Hennig Brand"
                 self.discovery_year = 1669
@@ -433,6 +463,7 @@ class Element:
                 self.melting_point_k = 388.36
                 self.boiling_point_k = 717.8
                 self.density = 2.07
+                self.natural = True
                 self.has_stable_isotope = True
                 self.discovery = "Antoine Lavoisier"
                 self.discovery_year = 1777
@@ -449,6 +480,7 @@ class Element:
                 self.melting_point_k = 171.6
                 self.boiling_point_k = 239.11
                 self.density = 0.0032
+                self.natural = True
                 self.has_stable_isotope = True
                 self.discovery = "Carl Wilhelm Scheele"
                 self.discovery_year = 1774
@@ -465,6 +497,7 @@ class Element:
                 self.melting_point_k = 83.81
                 self.boiling_point_k = 87.302
                 self.density = 0.001784
+                self.natural = True
                 self.has_stable_isotope = True
                 self.discovery = "Lord Rayleigh, William Ramsay"
                 self.discovery_year = 1894
@@ -481,6 +514,7 @@ class Element:
                 self.melting_point_k = 336.7
                 self.boiling_point_k = 1032
                 self.density = 0.89
+                self.natural = True
                 self.has_stable_isotope = True
                 self.discovery = "Humphry Davy"
                 self.discovery_year = 1807
@@ -497,6 +531,7 @@ class Element:
                 self.melting_point_k = 1115
                 self.boiling_point_k = 1757
                 self.density = 1.55
+                self.natural = True
                 self.has_stable_isotope = True
                 self.discovery = "Humphry Davy"
                 self.discovery_year = 1808
@@ -513,6 +548,7 @@ class Element:
                 self.melting_point_k = 1814
                 self.boiling_point_k = 3109
                 self.density = 2.985
+                self.natural = True
                 self.has_stable_isotope = True
                 self.discovery = "Lars Fredrik Nilson"
                 self.discovery_year = 1879
@@ -529,6 +565,7 @@ class Element:
                 self.melting_point_k = 1941
                 self.boiling_point_k = 3560
                 self.density = 4.506
+                self.natural = True
                 self.has_stable_isotope = True
                 self.discovery = "William Gregor"
                 self.discovery_year = 1791
@@ -545,6 +582,7 @@ class Element:
                 self.melting_point_k = 2183
                 self.boiling_point_k = 3680
                 self.density = 6.11
+                self.natural = True
                 self.has_stable_isotope = True
                 self.discovery = "Nils Gabriel Sefström"
                 self.discovery_year = 1830
@@ -561,6 +599,7 @@ class Element:
                 self.melting_point_k = 2180
                 self.boiling_point_k = 2944
                 self.density = 7.15
+                self.natural = True
                 self.has_stable_isotope = True
                 self.discovery = "Louis Nicolas Vauquelin"
                 self.discovery_year = 1794
@@ -577,6 +616,7 @@ class Element:
                 self.melting_point_k = 1519
                 self.boiling_point_k = 2334
                 self.density = 7.21
+                self.natural = True
                 self.has_stable_isotope = True
                 self.discovery = "Carl Wilhelm Scheele"
                 self.discovery_year = 1774
@@ -593,6 +633,7 @@ class Element:
                 self.melting_point_k = 1811
                 self.boiling_point_k = 3134
                 self.density = 7.874
+                self.natural = True
                 self.has_stable_isotope = True
                 self.discovery = None
                 self.discovery_year = None
@@ -609,6 +650,7 @@ class Element:
                 self.melting_point_k = 1768
                 self.boiling_point_k = 3200
                 self.density = 8.9
+                self.natural = True
                 self.has_stable_isotope = True
                 self.discovery = "Georg Brandt"
                 self.discovery_year = 1735
@@ -625,6 +667,7 @@ class Element:
                 self.melting_point_k = 1728
                 self.boiling_point_k = 3003
                 self.density = 8.908
+                self.natural = True
                 self.has_stable_isotope = True
                 self.discovery = "Axel Fredrik Cronstedt"
                 self.discovery_year = 1751
@@ -641,6 +684,7 @@ class Element:
                 self.melting_point_k = 1357.77
                 self.boiling_point_k = 2835
                 self.density = 8.96
+                self.natural = True
                 self.has_stable_isotope = True
                 self.discovery = "Middle East"
                 self.discovery_year = -9000
@@ -657,6 +701,7 @@ class Element:
                 self.melting_point_k = 692.68
                 self.boiling_point_k = 1180
                 self.density = 7.14
+                self.natural = True
                 self.has_stable_isotope = True
                 self.discovery = "Andreas Sigismund Marggraf"
                 self.discovery_year = 1746
@@ -673,6 +718,7 @@ class Element:
                 self.melting_point_k = 302.9146
                 self.boiling_point_k = 2673
                 self.density = 5.91
+                self.natural = True
                 self.has_stable_isotope = True
                 self.discovery = "Lecoq de Boisbaudran"
                 self.discovery_year = 1875
@@ -689,6 +735,7 @@ class Element:
                 self.melting_point_k = 1211.4
                 self.boiling_point_k = 3106
                 self.density = 5.323
+                self.natural = True
                 self.has_stable_isotope = True
                 self.discovery = "Clemens Winkler"
                 self.discovery_year = 1886
@@ -705,6 +752,7 @@ class Element:
                 self.melting_point_k = 1090
                 self.boiling_point_k = 887
                 self.density = 5.727
+                self.natural = True
                 self.has_stable_isotope = True
                 self.discovery = "Albertus Magnus"
                 self.discovery_year = 1250
@@ -721,6 +769,7 @@ class Element:
                 self.melting_point_k = 494
                 self.boiling_point_k = 958
                 self.density = 4.81
+                self.natural = True
                 self.has_stable_isotope = True
                 self.discovery = "Jöns Jakob Berzelius"
                 self.discovery_year = 1817
@@ -737,6 +786,7 @@ class Element:
                 self.melting_point_k = 265.8
                 self.boiling_point_k = 332
                 self.density = 3.1028
+                self.natural = True
                 self.has_stable_isotope = True
                 self.discovery = "Antoine Jérôme Balard"
                 self.discovery_year = 1825
@@ -753,6 +803,7 @@ class Element:
                 self.melting_point_k = 115.78
                 self.boiling_point_k = 119.93
                 self.density = 0.003749
+                self.natural = True
                 self.has_stable_isotope = True
                 self.discovery = "William Ramsay, Morris Travers"
                 self.discovery_year = 1898
@@ -769,6 +820,7 @@ class Element:
                 self.melting_point_k = 312.45
                 self.boiling_point_k = 961
                 self.density = 1.532
+                self.natural = True
                 self.has_stable_isotope = True
                 self.discovery = "Robert Bunsen, Gustav Kirchhoff"
                 self.discovery_year = 1861
@@ -785,6 +837,7 @@ class Element:
                 self.melting_point_k = 1050
                 self.boiling_point_k = 1650
                 self.density = 2.64
+                self.natural = True
                 self.has_stable_isotope = True
                 self.discovery = "William Cruickshank"
                 self.discovery_year = 1787
@@ -801,6 +854,7 @@ class Element:
                 self.melting_point_k = 1799
                 self.boiling_point_k = 3203
                 self.density = 4.472
+                self.natural = True
                 self.has_stable_isotope = True
                 self.discovery = "Johan Gadolin"
                 self.discovery_year = 1794
@@ -817,6 +871,7 @@ class Element:
                 self.melting_point_k = 2125
                 self.boiling_point_k = 4650
                 self.density = 6.52
+                self.natural = True
                 self.has_stable_isotope = True
                 self.discovery = "Martin Heinrich Klaproth"
                 self.discovery_year = 1789
@@ -833,6 +888,7 @@ class Element:
                 self.melting_point_k = 2750
                 self.boiling_point_k = 5017
                 self.density = 8.57
+                self.natural = True
                 self.has_stable_isotope = True
                 self.discovery = "Charles Hatchett"
                 self.discovery_year = 1801
@@ -849,6 +905,7 @@ class Element:
                 self.melting_point_k = 2896
                 self.boiling_point_k = 4912
                 self.density = 10.28
+                self.natural = True
                 self.has_stable_isotope = True
                 self.discovery = "Carl Wilhelm Scheele"
                 self.discovery_year = 1778
@@ -865,6 +922,7 @@ class Element:
                 self.melting_point_k = 2430
                 self.boiling_point_k = 4538
                 self.density = 11
+                self.natural = True # extremely trace amounts from decay.
                 self.has_stable_isotope = False
                 self.discovery = "Emilio Segrè, Carlo Perrier"
                 self.discovery_year = 1937
@@ -881,6 +939,7 @@ class Element:
                 self.melting_point_k = 2607
                 self.boiling_point_k = 4423
                 self.density = 12.45
+                self.natural = True
                 self.has_stable_isotope = True
                 self.discovery = "Karl Ernst Claus"
                 self.discovery_year = 1844
@@ -897,6 +956,7 @@ class Element:
                 self.melting_point_k = 2237
                 self.boiling_point_k = 3968
                 self.density = 12.41
+                self.natural = True
                 self.has_stable_isotope = True
                 self.discovery = "William Hyde Wollaston"
                 self.discovery_year = 1804
@@ -913,6 +973,7 @@ class Element:
                 self.melting_point_k = 1828.05
                 self.boiling_point_k = 3236
                 self.density = 12.023
+                self.natural = True
                 self.has_stable_isotope = True
                 self.discovery = "William Hyde Wollaston"
                 self.discovery_year = 1802
@@ -929,6 +990,7 @@ class Element:
                 self.melting_point_k = 1234.93
                 self.boiling_point_k = 2435
                 self.density = 10.49
+                self.natural = True
                 self.has_stable_isotope = True
                 self.discovery = None
                 self.discovery_year = None
@@ -945,6 +1007,7 @@ class Element:
                 self.melting_point_k = 594.22
                 self.boiling_point_k = 1040
                 self.density = 8.65
+                self.natural = True
                 self.has_stable_isotope = True
                 self.discovery = (
                     "Karl Samuel Leberecht Hermann, Friedrich Stromeyer")
@@ -962,6 +1025,7 @@ class Element:
                 self.melting_point_k = 429.7485
                 self.boiling_point_k = 2345
                 self.density = 7.31
+                self.natural = True
                 self.has_stable_isotope = True
                 self.discovery = (
                     "Ferdinand Reich, Hieronymous Theodor Richter")
@@ -979,6 +1043,7 @@ class Element:
                 self.melting_point_k = 505.08
                 self.boiling_point_k = 2875
                 self.density = 7.265
+                self.natural = True
                 self.has_stable_isotope = True
                 self.discovery = None
                 self.discovery_year = None
@@ -995,6 +1060,7 @@ class Element:
                 self.melting_point_k = 903.78
                 self.boiling_point_k = 1908
                 self.density = 6.697
+                self.natural = True
                 self.has_stable_isotope = True
                 self.discovery = None
                 self.discovery_year = None
@@ -1011,6 +1077,7 @@ class Element:
                 self.melting_point_k = 722.66
                 self.boiling_point_k = 1261
                 self.density = 6.24
+                self.natural = True
                 self.has_stable_isotope = True
                 self.discovery = "Franz-Joseph Müller von Reichenstein"
                 self.discovery_year = 1782
@@ -1027,6 +1094,7 @@ class Element:
                 self.melting_point_k = 386.85
                 self.boiling_point_k = 457.4
                 self.density = 4.933
+                self.natural = True
                 self.has_stable_isotope = True
                 self.discovery = "Bernard Courtois"
                 self.discovery_year = 1811
@@ -1043,6 +1111,7 @@ class Element:
                 self.melting_point_k = 161.4
                 self.boiling_point_k = 165.051
                 self.density = 0.005894
+                self.natural = True
                 self.has_stable_isotope = True
                 self.discovery = "William Ramsay, Morris Travers"
                 self.discovery_year = 1898
@@ -1059,6 +1128,7 @@ class Element:
                 self.melting_point_k = 301.7
                 self.boiling_point_k = 944
                 self.density = 1.93
+                self.natural = True
                 self.has_stable_isotope = True
                 self.discovery = "Robert Bunsen, Gustav Kirchhoff"
                 self.discovery_year = 1860
@@ -1075,6 +1145,7 @@ class Element:
                 self.melting_point_k = 1000
                 self.boiling_point_k = 2118
                 self.density = 3.51
+                self.natural = True
                 self.has_stable_isotope = True
                 self.discovery = "Carl Wilhelm Scheele"
                 self.discovery_year = 1772
@@ -1091,6 +1162,7 @@ class Element:
                 self.melting_point_k = 1193
                 self.boiling_point_k = 3737
                 self.density = 6.162
+                self.natural = True
                 self.has_stable_isotope = True
                 self.discovery = "Carl Gustaf Mosander"
                 self.discovery_year = 1838
@@ -1107,6 +1179,7 @@ class Element:
                 self.melting_point_k = 1068
                 self.boiling_point_k = 3716
                 self.density = 6.77
+                self.natural = True
                 self.has_stable_isotope = True
                 self.discovery = (
                     "Martin Heinrich Klaproth, Jöns Jakob Berzelius, "
@@ -1125,6 +1198,7 @@ class Element:
                 self.melting_point_k = 1208
                 self.boiling_point_k = 3403
                 self.density = 6.77
+                self.natural = True
                 self.has_stable_isotope = True
                 self.discovery = "Carl Auer von Welsbach"
                 self.discovery_year = 1885
@@ -1141,6 +1215,7 @@ class Element:
                 self.melting_point_k = 1297
                 self.boiling_point_k = 3347
                 self.density = 7.01
+                self.natural = True
                 self.has_stable_isotope = True
                 self.discovery = "Carl Auer von Welsbach"
                 self.discovery_year = 1885
@@ -1157,6 +1232,7 @@ class Element:
                 self.melting_point_k = 1315
                 self.boiling_point_k = 3273
                 self.density = 7.26
+                self.natural = True # extremely trace amounts from decay.
                 self.has_stable_isotope = False
                 self.discovery = (
                     "Charles D. Coryell, Jacob A. Marinsky, "
@@ -1175,6 +1251,7 @@ class Element:
                 self.melting_point_k = 1345
                 self.boiling_point_k = 2173
                 self.density = 7.52
+                self.natural = True
                 self.has_stable_isotope = True
                 self.discovery = "Lecoq de Boisbaudran"
                 self.discovery_year = 1879
@@ -1191,6 +1268,7 @@ class Element:
                 self.melting_point_k = 1099
                 self.boiling_point_k = 1802
                 self.density = 5.244
+                self.natural = True
                 self.has_stable_isotope = True
                 self.discovery = "Eugène-Anatole Demarçay"
                 self.discovery_year = 1896
@@ -1207,6 +1285,7 @@ class Element:
                 self.melting_point_k = 1585
                 self.boiling_point_k = 3273
                 self.density = 7.9
+                self.natural = True
                 self.has_stable_isotope = True
                 self.discovery = "Jean Charles Galissard de Marignac"
                 self.discovery_year = 1880
@@ -1223,6 +1302,7 @@ class Element:
                 self.melting_point_k = 1629
                 self.boiling_point_k = 3396
                 self.density = 8.23
+                self.natural = True
                 self.has_stable_isotope = True
                 self.discovery = "Carl Gustaf Mosander"
                 self.discovery_year = 1843
@@ -1239,6 +1319,7 @@ class Element:
                 self.melting_point_k = 1680
                 self.boiling_point_k = 2840
                 self.density = 8.54
+                self.natural = True
                 self.has_stable_isotope = True
                 self.discovery = "Lecoq de Boisbaudran"
                 self.discovery_year = 1886
@@ -1255,6 +1336,7 @@ class Element:
                 self.melting_point_k = 1734
                 self.boiling_point_k = 2873
                 self.density = 8.79
+                self.natural = True
                 self.has_stable_isotope = True
                 self.discovery = (
                     "Jacques-Louis Soret, Marc Delafontaine, "
@@ -1273,6 +1355,7 @@ class Element:
                 self.melting_point_k = 1802
                 self.boiling_point_k = 3141
                 self.density = 9.066
+                self.natural = True
                 self.has_stable_isotope = True
                 self.discovery = "Carl Gustaf Mosander"
                 self.discovery_year = 1843
@@ -1289,6 +1372,7 @@ class Element:
                 self.melting_point_k = 1818
                 self.boiling_point_k = 2223
                 self.density = 9.32
+                self.natural = True
                 self.has_stable_isotope = True
                 self.discovery = "Per Teodor Cleve"
                 self.discovery_year = 1879
@@ -1305,6 +1389,7 @@ class Element:
                 self.melting_point_k = 1097
                 self.boiling_point_k = 1469
                 self.density = 6.9
+                self.natural = True
                 self.has_stable_isotope = True
                 self.discovery = "Jean Charles Galissard de Marignac"
                 self.discovery_year = 1878
@@ -1321,6 +1406,7 @@ class Element:
                 self.melting_point_k = 1925
                 self.boiling_point_k = 3675
                 self.density = 9.841
+                self.natural = True
                 self.has_stable_isotope = True
                 self.discovery = "Carl Auer von Welsbach, Georges Urbain"
                 self.discovery_year = 1906
@@ -1337,6 +1423,7 @@ class Element:
                 self.melting_point_k = 2506
                 self.boiling_point_k = 4876
                 self.density = 13.31
+                self.natural = True
                 self.has_stable_isotope = True
                 self.discovery = "Dirk Coster, George de Hevesy"
                 self.discovery_year = 1922
@@ -1353,6 +1440,7 @@ class Element:
                 self.melting_point_k = 3290
                 self.boiling_point_k = 5731
                 self.density = 16.69
+                self.natural = True
                 self.has_stable_isotope = True
                 self.discovery = "Anders Gustaf Ekeberg"
                 self.discovery_year = 1802
@@ -1369,6 +1457,7 @@ class Element:
                 self.melting_point_k = 3695
                 self.boiling_point_k = 6203
                 self.density = 19.25
+                self.natural = True
                 self.has_stable_isotope = True
                 self.discovery = "Juan José Elhuyar, Fausto Elhuyar"
                 self.discovery_year = 1783
@@ -1385,6 +1474,7 @@ class Element:
                 self.melting_point_k = 3459
                 self.boiling_point_k = 5903
                 self.density = 21.02
+                self.natural = True
                 self.has_stable_isotope = True
                 self.discovery = "Walter Noddack, Ida Noddack, Otto Berg"
                 self.discovery_year = 1925
@@ -1401,6 +1491,7 @@ class Element:
                 self.melting_point_k = 3306
                 self.boiling_point_k = 5285
                 self.density = 22.59
+                self.natural = True
                 self.has_stable_isotope = True
                 self.discovery = "Smithson Tennant"
                 self.discovery_year = 1803
@@ -1417,6 +1508,7 @@ class Element:
                 self.melting_point_k = 2719
                 self.boiling_point_k = 4403
                 self.density = 22.56
+                self.natural = True
                 self.has_stable_isotope = True
                 self.discovery = "Smithson Tennant"
                 self.discovery_year = 1803
@@ -1433,6 +1525,7 @@ class Element:
                 self.melting_point_k = 2041.4
                 self.boiling_point_k = 4098
                 self.density = 21.45
+                self.natural = True
                 self.has_stable_isotope = True
                 self.discovery = "Antonio de Ulloa"
                 self.discovery_year = 1735
@@ -1449,6 +1542,7 @@ class Element:
                 self.melting_point_k = 1337.33
                 self.boiling_point_k = 3243
                 self.density = 19.3
+                self.natural = True
                 self.has_stable_isotope = True
                 self.discovery = "Middle East"
                 self.discovery_year = None
@@ -1465,6 +1559,7 @@ class Element:
                 self.melting_point_k = 234.321
                 self.boiling_point_k = 629.88
                 self.density = 13.534
+                self.natural = True
                 self.has_stable_isotope = True
                 self.discovery = None
                 self.discovery_year = None
@@ -1481,6 +1576,7 @@ class Element:
                 self.melting_point_k = 577
                 self.boiling_point_k = 1746
                 self.density = 11.85
+                self.natural = True
                 self.has_stable_isotope = True
                 self.discovery = "William Crookes"
                 self.discovery_year = 1861
@@ -1497,6 +1593,7 @@ class Element:
                 self.melting_point_k = 600.61
                 self.boiling_point_k = 2022
                 self.density = 11.34
+                self.natural = True
                 self.has_stable_isotope = True
                 self.discovery = "Middle East"
                 self.discovery_year = None
@@ -1513,6 +1610,7 @@ class Element:
                 self.melting_point_k = 544.7
                 self.boiling_point_k = 1837
                 self.density = 9.78
+                self.natural = True
                 self.has_stable_isotope = False
                 self.discovery = "Claude François Geoffroy"
                 self.discovery_year = 1753
@@ -1529,6 +1627,7 @@ class Element:
                 self.melting_point_k = 527
                 self.boiling_point_k = 1235
                 self.density = 9.196
+                self.natural = True
                 self.has_stable_isotope = False
                 self.discovery = "Marie Curie, Pierre Curie"
                 self.discovery_year = 1898
@@ -1545,6 +1644,7 @@ class Element:
                 self.melting_point_k = None
                 self.boiling_point_k = None
                 self.density = None
+                self.natural = True
                 self.has_stable_isotope = False
                 self.discovery = (
                     "Dale R. Corson, Kenneth R. Mackenzie, "
@@ -1563,6 +1663,7 @@ class Element:
                 self.melting_point_k = 202
                 self.boiling_point_k = 211.5
                 self.density = 0.00973
+                self.natural = True
                 self.has_stable_isotope = False
                 self.discovery = "Ernest Rutherford, Robert B. Owens"
                 self.discovery_year = 1899
@@ -1579,6 +1680,7 @@ class Element:
                 self.melting_point_k = 300
                 self.boiling_point_k = 950
                 self.density = None
+                self.natural = True
                 self.has_stable_isotope = False
                 self.discovery = "Marguerite Perey"
                 self.discovery_year = 1939
@@ -1595,6 +1697,7 @@ class Element:
                 self.melting_point_k = 973
                 self.boiling_point_k = 2010
                 self.density = 5.5
+                self.natural = True
                 self.has_stable_isotope = False
                 self.discovery = "Marie Curie, Pierre Curie"
                 self.discovery_year = 1898
@@ -1611,6 +1714,7 @@ class Element:
                 self.melting_point_k = 1323
                 self.boiling_point_k = 3473
                 self.density = 10
+                self.natural = True
                 self.has_stable_isotope = False
                 self.discovery = "Friedrich Oskar Giesel"
                 self.discovery_year = 1902
@@ -1627,6 +1731,7 @@ class Element:
                 self.melting_point_k = 2023
                 self.boiling_point_k = 5061
                 self.density = 11.7
+                self.natural = True
                 self.has_stable_isotope = False
                 self.discovery = "Jöns Jakob Berzelius"
                 self.discovery_year = 1829
@@ -1643,6 +1748,7 @@ class Element:
                 self.melting_point_k = 1841
                 self.boiling_point_k = 4300
                 self.density = 15.37
+                self.natural = True
                 self.has_stable_isotope = False
                 self.discovery = "Kasimir Fajans, Oswald Helmuth Göhring"
                 self.discovery_year = 1913
@@ -1659,6 +1765,7 @@ class Element:
                 self.melting_point_k = 1405.3
                 self.boiling_point_k = 4404
                 self.density = 19.1
+                self.natural = True
                 self.has_stable_isotope = False
                 self.discovery = "Martin Heinrich Klaproth"
                 self.discovery_year = 1789
@@ -1675,6 +1782,7 @@ class Element:
                 self.melting_point_k = 912
                 self.boiling_point_k = None
                 self.density = 20.45
+                self.natural = True
                 self.has_stable_isotope = False
                 self.discovery = "Edwin McMillan, Philip H. Abelson"
                 self.discovery_year = 1940
@@ -1691,6 +1799,7 @@ class Element:
                 self.melting_point_k = 912.5
                 self.boiling_point_k = 3505
                 self.density = 19.85
+                self.natural = False
                 self.has_stable_isotope = False
                 self.discovery = (
                     "Glenn T. Seaborg, Arthur Wahl, Joseph W. Kennedy, "
@@ -1709,6 +1818,7 @@ class Element:
                 self.melting_point_k = 1449
                 self.boiling_point_k = None
                 self.density = 12
+                self.natural = False
                 self.has_stable_isotope = False
                 self.discovery = (
                     "Glenn T. Seaborg, Ralph A. James, Leon O. Morgan, "
@@ -1727,6 +1837,7 @@ class Element:
                 self.melting_point_k = 1613
                 self.boiling_point_k = 3383
                 self.density = 13.51
+                self.natural = False
                 self.has_stable_isotope = False
                 self.discovery = (
                     "Glenn T. Seaborg, Ralph A. James, Albert Ghiorso")
@@ -1744,6 +1855,7 @@ class Element:
                 self.melting_point_k = 1259
                 self.boiling_point_k = None
                 self.density = 14.78
+                self.natural = False
                 self.has_stable_isotope = False
                 self.discovery = "Lawrence Berkeley National Laboratory"
                 self.discovery_year = 1949
@@ -1760,6 +1872,7 @@ class Element:
                 self.melting_point_k = 1173
                 self.boiling_point_k = None
                 self.density = 15.1
+                self.natural = False
                 self.has_stable_isotope = False
                 self.discovery = "Lawrence Berkeley National Laboratory"
                 self.discovery_year = 1950
@@ -1776,6 +1889,7 @@ class Element:
                 self.melting_point_k = 1133
                 self.boiling_point_k = None
                 self.density = 8.84
+                self.natural = False
                 self.has_stable_isotope = False
                 self.discovery = "Lawrence Berkeley National Laboratory"
                 self.discovery_year = 1952
@@ -1792,6 +1906,7 @@ class Element:
                 self.melting_point_k = 1800
                 self.boiling_point_k = None
                 self.density = None
+                self.natural = False
                 self.has_stable_isotope = False
                 self.discovery = "Lawrence Berkeley National Laboratory"
                 self.discovery_year = 1952
@@ -1808,6 +1923,7 @@ class Element:
                 self.melting_point_k = 1100
                 self.boiling_point_k = None
                 self.density = None
+                self.natural = False
                 self.has_stable_isotope = False
                 self.discovery = "Lawrence Berkeley National Laboratory"
                 self.discovery_year = 1955
@@ -1824,6 +1940,7 @@ class Element:
                 self.melting_point_k = 1100
                 self.boiling_point_k = None
                 self.density = None
+                self.natural = False
                 self.has_stable_isotope = False
                 self.discovery = "Joint Institute for Nuclear Research"
                 self.discovery_year = 1966
@@ -1840,6 +1957,7 @@ class Element:
                 self.melting_point_k = 1900
                 self.boiling_point_k = None
                 self.density = None
+                self.natural = False
                 self.has_stable_isotope = False
                 self.discovery = (
                     "Lawrence Berkeley National Laboratory, "
@@ -1858,6 +1976,7 @@ class Element:
                 self.melting_point_k = None
                 self.boiling_point_k = None
                 self.density = None
+                self.natural = False
                 self.has_stable_isotope = False
                 self.discovery = "Joint Institute for Nuclear Research"
                 self.discovery_year = 1964
@@ -1874,6 +1993,7 @@ class Element:
                 self.melting_point_k = None
                 self.boiling_point_k = None
                 self.density = None
+                self.natural = False
                 self.has_stable_isotope = False
                 self.discovery = (
                     "Lawrence Berkeley National Laboratory, "
@@ -1892,6 +2012,7 @@ class Element:
                 self.melting_point_k = None
                 self.boiling_point_k = None
                 self.density = None
+                self.natural = False
                 self.has_stable_isotope = False
                 self.discovery = "Lawrence Berkeley National Laboratory"
                 self.discovery_year = 1974
@@ -1908,6 +2029,7 @@ class Element:
                 self.melting_point_k = None
                 self.boiling_point_k = None
                 self.density = None
+                self.natural = False
                 self.has_stable_isotope = False
                 self.discovery = "Gesellschaft für Schwerionenforschung"
                 self.discovery_year = 1981
@@ -1924,6 +2046,7 @@ class Element:
                 self.melting_point_k = None
                 self.boiling_point_k = None
                 self.density = None
+                self.natural = False
                 self.has_stable_isotope = False
                 self.discovery = "Gesellschaft für Schwerionenforschung"
                 self.discovery_year = 1984
@@ -1940,6 +2063,7 @@ class Element:
                 self.melting_point_k = None
                 self.boiling_point_k = None
                 self.density = None
+                self.natural = False
                 self.has_stable_isotope = False
                 self.discovery = "Gesellschaft für Schwerionenforschung"
                 self.discovery_year = 1982
@@ -1956,6 +2080,7 @@ class Element:
                 self.melting_point_k = None
                 self.boiling_point_k = None
                 self.density = None
+                self.natural = False
                 self.has_stable_isotope = False
                 self.discovery = "Gesellschaft für Schwerionenforschung"
                 self.discovery_year = 1994
@@ -1972,6 +2097,7 @@ class Element:
                 self.melting_point_k = None
                 self.boiling_point_k = None
                 self.density = None
+                self.natural = False
                 self.has_stable_isotope = False
                 self.discovery = "Gesellschaft für Schwerionenforschung"
                 self.discovery_year = 1994
@@ -1988,6 +2114,7 @@ class Element:
                 self.melting_point_k = None
                 self.boiling_point_k = None
                 self.density = None
+                self.natural = False
                 self.has_stable_isotope = False
                 self.discovery = "Gesellschaft für Schwerionenforschung"
                 self.discovery_year = 1996
@@ -2004,6 +2131,7 @@ class Element:
                 self.melting_point_k = None
                 self.boiling_point_k = None
                 self.density = None
+                self.natural = False
                 self.has_stable_isotope = False
                 self.discovery = "Riken"
                 self.discovery_year = 2004
@@ -2020,6 +2148,7 @@ class Element:
                 self.melting_point_k = None
                 self.boiling_point_k = None
                 self.density = None
+                self.natural = False
                 self.has_stable_isotope = False
                 self.discovery = (
                     "Joint Institute for Nuclear Research, "
@@ -2038,6 +2167,7 @@ class Element:
                 self.melting_point_k = None
                 self.boiling_point_k = None
                 self.density = None
+                self.natural = False
                 self.has_stable_isotope = False
                 self.discovery = (
                     "Joint Institute for Nuclear Research, "
@@ -2056,6 +2186,7 @@ class Element:
                 self.melting_point_k = None
                 self.boiling_point_k = None
                 self.density = None
+                self.natural = False
                 self.has_stable_isotope = False
                 self.discovery = (
                     "Joint Institute for Nuclear Research, "
@@ -2074,6 +2205,7 @@ class Element:
                 self.melting_point_k = None
                 self.boiling_point_k = None
                 self.density = None
+                self.natural = False
                 self.has_stable_isotope = False
                 self.discovery = (
                     "Joint Institute for Nuclear Research, "
@@ -2093,6 +2225,7 @@ class Element:
                 self.melting_point_k = None
                 self.boiling_point_k = None
                 self.density = None
+                self.natural = False
                 self.has_stable_isotope = False
                 self.discovery = (
                     "Joint Institute for Nuclear Research, "

@@ -1,3 +1,4 @@
+import json
 from typing import Callable
 
 import chemelements
@@ -19,6 +20,8 @@ class PeriodicTable:
         """
         self._elements = []
 
+        self._natural_elements = []
+        self._synthetic_elements = []
         self._elements_with_stable_isotope = []
         self._elements_without_stable_isotope = []
 
@@ -51,6 +54,11 @@ class PeriodicTable:
                 self._lanthanides.append(element)
             elif 89 <= element.atomic_number <= 103:
                 self._actinides.append(element)
+            
+            if element.natural:
+                self._natural_elements.append(element)
+            else:
+                self._synthetic_elements.append(element)
 
             if element.has_stable_isotope:
                 self._elements_with_stable_isotope.append(element)
@@ -250,6 +258,14 @@ class PeriodicTable:
         return self._elements
     
     @property
+    def natural_elements(self) -> list[chemelements.Element]:
+        return self._natural_elements
+    
+    @property
+    def synthetic_elements(self) -> list[chemelements.Element]:
+        return self._synthetic_elements
+    
+    @property
     def elements_with_stable_isotope(self) -> list[chemelements.Element]:
         return self._elements_with_stable_isotope
     
@@ -345,6 +361,8 @@ class PeriodicTable:
         if not elements_to_dict:
             return {
                 "elements": {element.name: element for element in self},
+                "natural_elements": self._natural_elements,
+                "synthetic_elements": self._synthetic_elements,
                 "elements_with_stable_isotope":
                 self._elements_with_stable_isotope,
                 "elements_without_stable_isotope":
@@ -363,6 +381,12 @@ class PeriodicTable:
 
         return {
             "elements": element_dicts,
+            "natural_elements": [
+                element_dicts[element.name]
+                for element in self._natural_elements],
+            "synthetic_elements": [
+                element_dicts[element.name]
+                for element in self._synthetic_elements],
             "elements_with_stable_isotope": [
                 element_dicts[element.name]
                 for element in self._elements_with_stable_isotope],
@@ -388,3 +412,21 @@ class PeriodicTable:
                 element_dicts[element.name]
                 for element in self._noble_gases]
         }
+    
+    def to_json(
+        self, elements_only: bool = False,
+        indent: int | None = None, compact: bool = False) -> str:
+        """
+        Returns periodic table data in JSON format.
+        If 'elements_only' is passed as True, only JSON
+        data for the elements will be returned, not the different
+        categories of elements alongside.
+        'compact' to True removes all unnecessary whitespace in
+        the JSON string.
+        """
+        dict_data = self.asdict(elements_only=elements_only)
+
+        if compact:
+            return json.dumps(dict_data, indent=indent, separators=(",", ":"))
+
+        return json.dumps(dict_data, indent=indent)
