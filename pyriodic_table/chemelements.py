@@ -22,6 +22,7 @@ class Element:
         - Name of element e.g hydrogen <str>
         - Symbol of element e.g H for hydrogen <str>
         - Atomic number e.g 1 for hydrogen <int>
+
         Name/symbol are case-insensitive.
         """
         # Name/symbol are case-insensitive.
@@ -167,6 +168,11 @@ class Element:
 
         return "\n".join(lines)
     
+    def _validate_object_to_compare(self, obj) -> None:
+        if not isinstance(obj, Element):
+            raise TypeError("Cannot compare <{} with Element.".format(
+                str(type(obj)).split()[1]))
+    
     def __eq__(self, element) -> bool:
         """
         Checks if two elements instances are the same (atomic number).
@@ -181,9 +187,8 @@ class Element:
         """
         Checks if the element has a greater atomic number than another.
         """
-        if not isinstance(element, Element):
-            return False
-        
+        self._validate_object_to_compare(element)
+
         return self.atomic_number > element.atomic_number
     
     def __ge__(self, element) -> bool:
@@ -191,8 +196,7 @@ class Element:
         Checks if the element has a greater atomic number than
         or equal to another.
         """
-        if not isinstance(element, Element):
-            return False
+        self._validate_object_to_compare(element)
         
         return self.atomic_number >= element.atomic_number
 
@@ -200,8 +204,7 @@ class Element:
         """
         Checks if the element has a lower atomic number than another.
         """
-        if not isinstance(element, Element):
-            return False
+        self._validate_object_to_compare(element)
         
         return self.atomic_number < element.atomic_number
     
@@ -210,8 +213,7 @@ class Element:
         Checks if the element has a lower atomic number than
         or equal to another.
         """
-        if not isinstance(element, Element):
-            return False
+        self._validate_object_to_compare(element)
         
         return self.atomic_number <= element.atomic_number
     
