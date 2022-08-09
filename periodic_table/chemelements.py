@@ -7,8 +7,12 @@ class Element:
     """
     Represents an element of the periodic table.
     There are currently 118 discovered elements.
+
     For reference, the first five elements are:
     hydrogen, helium, lithium, beryllium, boron
+
+    And the last five elements are:
+    flerovium, moscovium, livermorium, tennessine, oganesson
     """
 
     @property
@@ -61,8 +65,7 @@ class Element:
             f"Name: {self.name.title()}",
             f"Symbol: {self.symbol}",
             f"Atomic number: {self.atomic_number}",
-            f"Atomic mass: {self.atomic_mass}"
-        ]
+            f"Atomic mass: {self.atomic_mass}"]
 
         if self.electrons_per_shell is not None:
             lines.append(f"Electrons per shell: {self.electrons_per_shell}")
@@ -70,7 +73,8 @@ class Element:
         if self.state is not None:
             lines.append(f"State (room temperature): {self.state.title()}")
 
-        lines.append(f"Group: {self.group}")
+        if self.group is not None:
+            lines.append(f"Group: {self.group}")
         lines.append(f"Period: {self.period}")
 
         if self.melting_point_k is not None:
@@ -78,22 +82,19 @@ class Element:
                 "Melting point: {} K / {} °C / {} °F".format(
                     self.melting_point_k, 
                     self.melting_point_c,
-                    self.melting_point_f
-                )
-            )
+                    self.melting_point_f))
         
         if self.boiling_point_k is not None:
             lines.append(
-                "Melting point: {} K / {} °C / {} °F".format(
+                "Boiling point: {} K / {} °C / {} °F".format(
                     self.boiling_point_k,
                     self.boiling_point_c,
-                    self.boiling_point_f
-                )
-            )
+                    self.boiling_point_f))
         
         if self.density is not None:
             lines.append(f"Density (room temperature): {self.density} g/cm³")
         
+        lines.append(f"Found naturally: {self.natural}")
         lines.append(f"Has stable isotope(s): {self.has_stable_isotope}")
 
         if self.discovery is not None:
@@ -109,8 +110,7 @@ class Element:
         elif self.discovery_year is not None:
             lines.append("Discovered in {}".format(
                     self.discovery_year if self.discovery_year >= 0
-                    else f"{abs(self.discovery_year)} BC")
-                )
+                    else f"{abs(self.discovery_year)} BC"))
 
         return "\n".join(lines)
     
@@ -2253,5 +2253,4 @@ class Element:
             case _:
                 raise ElementDoesNotExist(
                     ("Info does not match the name, symbol or atomic number "
-                    f"of any element: {info}")
-                )
+                    f"of any element: {info}"))
