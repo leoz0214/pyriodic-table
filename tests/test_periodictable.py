@@ -2,9 +2,9 @@ import sys
 import unittest
 
 sys.path.append(".")
-sys.path.append("./periodic_table")
+sys.path.append("./pyriodic_table")
 
-from periodic_table.periodictable import PeriodicTable
+from pyriodic_table.periodictable import PeriodicTable
 
 
 class TestPeriodicTable(unittest.TestCase):
@@ -12,6 +12,8 @@ class TestPeriodicTable(unittest.TestCase):
     def test_creation(self):
         periodic_table = PeriodicTable()
         self.assertEqual(len(periodic_table), 118)
+        self.assertEqual(len(periodic_table.natural_elements), 93)
+        self.assertEqual(len(periodic_table.synthetic_elements), 25)
         self.assertEqual(len(periodic_table.alkali_metals), 6)
         self.assertEqual(len(periodic_table.alkaline_earth_metals), 6)
         self.assertEqual(len(periodic_table.lanthanides), 15)

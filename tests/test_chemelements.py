@@ -2,9 +2,9 @@ import sys
 import unittest
 
 sys.path.append(".")
-sys.path.append("./periodic_table")
+sys.path.append("./pyriodic_table")
 
-from periodic_table.chemelements import Element
+from pyriodic_table.chemelements import Element
 
 
 class TestChemElements(unittest.TestCase):
@@ -29,6 +29,7 @@ class TestChemElements(unittest.TestCase):
         self.assertEqual(hydrogen.boiling_point_f, 
             round(1.8 * (hydrogen.boiling_point_k - 273.15) + 32, 10))
         self.assertEqual(hydrogen.density, 0.00008988)
+        self.assertTrue(hydrogen.natural)
         self.assertTrue(hydrogen.has_stable_isotope)
         self.assertEqual(hydrogen.discovery, "Henry Cavendish")
         self.assertEqual(hydrogen.discovery_year, 1766)
