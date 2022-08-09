@@ -92,9 +92,8 @@ class PeriodicTable:
         """
         Finds element by its atomic number (number of protons).
         """
-        for element in self:
-            if element.atomic_number == atomic_number:
-                return element
+        if 1 <= atomic_number <= NUMBER_OF_ELEMENTS:
+            return self._elements[atomic_number - 1]
         
         raise ElementDoesNotExist(
             f"No such element with the atomic number: {atomic_number}")
@@ -284,7 +283,7 @@ class PeriodicTable:
 
     def __len__(self) -> int:
         """
-        Returns the number of elements in the periodic table.
+        Returns the number of elements in the periodic table (118).
         """
         return len(self._elements)
     
@@ -341,6 +340,7 @@ class PeriodicTable:
                 return {element.name: element for element in self}
             
             return {element.name: element.asdict() for element in self}
+
 
         if not elements_to_dict:
             return {
