@@ -4,6 +4,17 @@
 
 - Provide *insightful* data (as accurate as possible) on the 118 chemical elements discovered to date,
 starting with **hydrogen**, all the way to the super-heavy **oganesson**!
+
+Examples of data being provided on for the elements include (but not limited to):
+    - Name
+    - Symbol
+    - Atomic number
+    - Atomic mass
+    - Melting/boiling point
+    - Group/period
+    - Density
+    - Discovery
+
 - Make this data easily accessible, in an organised manner.
 - Allow easy identification of elements to access their data, through multiple methods.
 - Be user-friendly and easy to use.
