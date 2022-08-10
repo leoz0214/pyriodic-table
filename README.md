@@ -1,12 +1,15 @@
 # --- pyriodic_table ---
 
-`pyriodic_table` is a simple Python library which aims to achieve the following:
+`pyriodic_table` is a simple Python package which aims to achieve the following:
 
 - Provide *insightful* data (as accurate as possible) on the 118 chemical elements discovered to date,
 starting with **hydrogen**, all the way to the super-heavy **oganesson**!
 - Make this data easily accessible, in an organised manner.
 - Allow easy identification of elements to access their data, through multiple methods.
 - Be user-friendly and easy to use.
+
+The PyPi page for the package is:
+https://pypi.org/project/pyriodic-table/
 
 ## About the data
 
@@ -30,3 +33,7 @@ Nonetheless, the common elements likely have high-quality accurate data, and con
 most used. For example, unsurprisingly oxygen, an abundant element we need for respiration
 is much better known than livermorium, a synthetic, radioactive, short-lived element of which
 only a few atoms have been produced.
+
+## Compatability
+
+Python 3.9 or greater is supported.
