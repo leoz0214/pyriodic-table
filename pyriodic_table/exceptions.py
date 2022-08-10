@@ -4,6 +4,7 @@ class PyriodicTableException(Exception):
     """
     pass
 
+
 class ElementDoesNotExist(PyriodicTableException):
     """
     Chemical element does not exist (or remains undiscovered).

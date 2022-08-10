@@ -1,4 +1,4 @@
-DATA = [
+ELEMENTS_DATA = [
 {   "name": "hydrogen",
     "symbol": "H",
     "atomic_number": 1,
