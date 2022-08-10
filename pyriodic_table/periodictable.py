@@ -1,4 +1,5 @@
 import json
+import csv
 from typing import Callable
 
 import chemelements
@@ -7,6 +8,38 @@ from exceptions import ElementDoesNotExist
 
 NUMBER_OF_ELEMENTS = 118
 
+CSV_HEADERS = (
+    "name", "symbol", "atomic_number", "atomic_mass",
+    "electrons_per_shell", "state", "group", "period", "protons", "electrons",
+    "melting_point_k", "melting_point_c", "melting_point_f",
+    "boiling_point_k", "boiling_point_c", "boiling_point_f",
+    "density", "natural", "has_stable_isotope", "discovery", "discovery_year")
+
+
+def save_elements_data_to_csv(
+    file_location: str, elements: list[chemelements.Element] | None = None
+) -> None:
+    """
+    Saves data on the elements in a CSV file. A great way to analyse
+    elements data (use libraries such as pandas and matplotlib).
+
+    To only save data for certain elements, pass in a list of
+    Element objects which represent the elements to be included.
+    If 'elements' is passed in as None, all the elements will be
+    included in the CSV.
+
+    Warning: if the file already exists, it will be overwritten.
+    """
+    if elements is None:
+        elements = PeriodicTable().elements
+
+    elements_data = [element.asdict() for element in elements]
+    
+    with open(file_location, "w", encoding="utf8", newline="") as f:
+        writer = csv.DictWriter(f, fieldnames=CSV_HEADERS)
+        writer.writeheader()
+        writer.writerows(elements_data)
+    
 
 class PeriodicTable:
     """
