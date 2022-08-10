@@ -34,7 +34,7 @@ CSV_HEADERS = (
 
 def save_elements_data_to_csv(
     file_location: str,
-    elements: Union(list[chemelements.Element], None) = None) -> None:
+    elements: Union[list[chemelements.Element], None] = None) -> None:
     """
     Saves data on the elements in a CSV file. A great way to analyse
     elements data (using libraries such as pandas and matplotlib).
@@ -238,7 +238,7 @@ class PeriodicTable:
             element for element in self if element.state == state]
     
     def get_elements_by_group(
-        self, group: Union(int, None)) -> list[chemelements.Element]:
+        self, group: Union[int, None]) -> list[chemelements.Element]:
         """
         Finds the elements in a particular Group (column).
 
@@ -258,7 +258,7 @@ class PeriodicTable:
         # Decorator function supporting both getting elements
         # by melting/boiling point.
         def wrap(
-            self, minimum: Union(int, float), maximum: Union(int, float),
+            self, minimum: Union[int, float], maximum: Union[int, float],
             unit: str = "k") -> list[chemelements.Element]:
 
             unit = unit.lower()
@@ -304,7 +304,7 @@ class PeriodicTable:
         return "boiling_point"
     
     def get_elements_by_density(
-        self, minimum: Union(int, float), maximum: Union(int, float)
+        self, minimum: Union[int, float], maximum: Union[int, float]
     ) -> list[chemelements.Element]:
         """
         Finds the elements with a density in a given range.
@@ -512,7 +512,7 @@ class PeriodicTable:
     
     def to_json(
         self, elements_only: bool = False,
-        indent: Union(int, None) = None, compact: bool = False) -> str:
+        indent: Union[int, None] = None, compact: bool = False) -> str:
         """
         Returns periodic table data as a JSON string
         (first converted into a dictionary).
