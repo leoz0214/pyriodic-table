@@ -13,8 +13,8 @@ import json
 # but this allows compatability with older Python versions.
 from typing import Union
 
-from data import ELEMENTS_DATA
-from exceptions import ElementDoesNotExist
+from .data import ELEMENTS_DATA
+from .exceptions import ElementDoesNotExist
 
 
 class Element:

@@ -17,8 +17,8 @@ import csv
 # but this allows compatability with older Python versions.
 from typing import Callable, Union
 
-import chemelements
-from exceptions import ElementDoesNotExist
+from . import chemelements
+from .exceptions import ElementDoesNotExist
 
 
 # As of August 2022.
