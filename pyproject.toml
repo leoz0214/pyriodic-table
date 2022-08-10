@@ -1,0 +1,22 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "pyriodic-table"
+version = "1.0.0"
+authors = [
+  { name="Leo Zhang", email="leozhang0214@gmail.com" },
+]
+description = "A library which provides data on the Periodic Table of Elements."
+readme = "README.md"
+license = { file="LICENSE" }
+requires-python = ">=3.9"
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "Operating System :: OS Independent",
+]
+
+[project.urls]
+"Homepage" = "https://github.com/leoz0214/pyriodic-table"
+"Bug Tracker" = "https://github.com/leoz0214/pyriodic-table/issues"
