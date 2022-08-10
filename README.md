@@ -4,7 +4,6 @@
 
 - Provide *insightful* data (as accurate as possible) on the 118 chemical elements discovered to date,
 starting with **hydrogen**, all the way to the super-heavy **oganesson**!
-
 - Make this data easily accessible, in an organised manner.
 - Allow easy identification of elements to access their data, through multiple methods.
 - Be user-friendly and easy to use.
