@@ -1,11 +1,27 @@
+"""
+This module holds the PeriodicTable class, which
+unsurprisisngly, has data on all 118 elements.
+
+It also providides utility methods to seamlessly iterate through
+the elements, and identify them with various data points.
+
+There is also a function to save data of elements to a CSV file,
+which can be useful for data analysis.
+"""
+
+
 import json
 import csv
-from typing import Callable
+
+# For Union - yes, Python 3.10 indeed supports '|',
+# but this allows compatability with older Python versions.
+from typing import Callable, Union
 
 import chemelements
 from exceptions import ElementDoesNotExist
 
 
+# As of August 2022.
 NUMBER_OF_ELEMENTS = 118
 
 CSV_HEADERS = (
@@ -17,11 +33,11 @@ CSV_HEADERS = (
 
 
 def save_elements_data_to_csv(
-    file_location: str, elements: list[chemelements.Element] | None = None
-) -> None:
+    file_location: str,
+    elements: Union(list[chemelements.Element], None) = None) -> None:
     """
     Saves data on the elements in a CSV file. A great way to analyse
-    elements data (use libraries such as pandas and matplotlib).
+    elements data (using libraries such as pandas and matplotlib).
 
     To only save data for certain elements, pass in a list of
     Element objects which represent the elements to be included.
@@ -49,9 +65,12 @@ class PeriodicTable:
     def __init__(self) -> None:
         """
         Creates a new instance of the periodic table.
-        Gets all the elements of the periodic table by atomic number.
+        Gets all the elements of the periodic table in order
+        by atomic number.
         """
         self._elements = []
+
+        # Various element categories.
 
         self._natural_elements = []
         self._synthetic_elements = []
@@ -74,6 +93,8 @@ class PeriodicTable:
             setattr(self, element.symbol.title(), element)
 
             self._elements.append(element)
+
+            # Adds elements into relevant categories.
 
             if element.group == 1 and element.atomic_number != 1:
                 self._alkali_metals.append(element)
@@ -115,15 +136,17 @@ class PeriodicTable:
         self, function_check: Callable) -> list[chemelements.Element]:
         """
         Finds elements whose name evaluates to True
-        when passed into a function.
+        when passed into a filter-like function.
 
         For example, given the following functions:
 
-        lambda name: name.startswith("bo");
+        lambda name: name.startswith("bo")
+
         [boron, bohrium] would be returned.
 
-        lambda x: len(x) < 4;
-        [tin] would be returned
+        lambda x: len(x) < 4
+
+        [tin] would be returned.
 
         Note that the names of the elements are passed into the function.
         """
@@ -146,6 +169,7 @@ class PeriodicTable:
         """
         Finds the elements which have an atomic number
         within a particular range.
+
         Works similarly to the range() function,
         so the 'stop' atomic number is not included.
         """
@@ -177,11 +201,12 @@ class PeriodicTable:
         self, function_check: Callable) -> list[chemelements.Element]:
         """
         Finds the elements whose symbol evaluates to True
-        when passed into a function.
+        when passed into a filter-like function.
 
         For example, given the following function:
 
-        lambda symbol: len(symbol) == 1;
+        lambda symbol: len(symbol) == 1
+
         [hydrogen, boron, carbon, nitrogen, oxygen, fluorine,
         phosphorus,sulfur, potassium, vanadium, yttrium,
         iodine, tungsten, uranium] would be returned.
@@ -194,8 +219,10 @@ class PeriodicTable:
     def get_elements_by_state(self, state: str) -> list[chemelements.Element]:
         """
         Finds the elements at a particular state at room temperature.
+
         State must either be 'solid', 'liquid' or 'gas',
         or their corresponding shorthands - 's', 'l', 'g'.
+
         Case-insensitive.
         """
         state = state.lower()
@@ -211,9 +238,10 @@ class PeriodicTable:
             element for element in self if element.state == state]
     
     def get_elements_by_group(
-        self, group: int | None) -> list[chemelements.Element]:
+        self, group: Union(int, None)) -> list[chemelements.Element]:
         """
         Finds the elements in a particular Group (column).
+
         If 'group' is passed as None, all the elements not in
         a group are returned, such as some of the lanthanides.
         """
@@ -230,8 +258,9 @@ class PeriodicTable:
         # Decorator function supporting both getting elements
         # by melting/boiling point.
         def wrap(
-            self, minimum: int | float, maximum: int | float, unit: str = "k"
-        ) -> list[chemelements.Element]:
+            self, minimum: Union(int, float), maximum: Union(int, float),
+            unit: str = "k") -> list[chemelements.Element]:
+
             unit = unit.lower()
 
             if unit not in ("k", "c", "f"):
@@ -254,8 +283,10 @@ class PeriodicTable:
     def get_elements_by_melting_point():
         """
         Finds the elements with a melting point in a given range.
+
         The temperature unit must either be 
         'k' (kelvin), 'c' (celsius), or 'f' (fahrenheit).
+
         Case-insensitive.
         """
         return "melting_point"
@@ -264,14 +295,16 @@ class PeriodicTable:
     def get_elements_by_boiling_point():
         """
         Finds the elements with a boiling point in a given range.
+
         The temperature unit must either be 
         'k' (kelvin), 'c' (celsius), or 'f' (fahrenheit).
+
         Case-insensitive.
         """
         return "boiling_point"
     
     def get_elements_by_density(
-        self, minimum: int | float, maximum: int | float
+        self, minimum: Union(int, float), maximum: Union(int, float)
     ) -> list[chemelements.Element]:
         """
         Finds the elements with a density in a given range.
@@ -286,7 +319,9 @@ class PeriodicTable:
         """
         Finds the elements discovered within a given time period.
         For BC years, use negative integers.
-        For example, for 5000 BC, use -5000
+
+        For example, for 5000 BC, use -5000;
+        but for 2022, simply use 2022
         """
         return [
             element for element in self
@@ -295,46 +330,58 @@ class PeriodicTable:
         
     @property
     def elements(self) -> list[chemelements.Element]:
+        # All 118 elements.
         return self._elements
     
     @property
     def natural_elements(self) -> list[chemelements.Element]:
+        # Elements which can be found in nature.
         return self._natural_elements
     
     @property
     def synthetic_elements(self) -> list[chemelements.Element]:
+        # Man-made elements.
         return self._synthetic_elements
     
     @property
     def elements_with_stable_isotope(self) -> list[chemelements.Element]:
+        # Non-radioactive elements.
         return self._elements_with_stable_isotope
     
     @property
     def elements_without_stable_isotope(self) -> list[chemelements.Element]:
+        # Radioactive elements.
         return self._elements_without_stable_isotope
     
     @property
     def alkali_metals(self) -> list[chemelements.Element]:
+        # Reactive, Group 1 metals.
         return self._alkali_metals
     
     @property
     def alkaline_earth_metals(self) -> list[chemelements.Element]:
+        # Fairly reactive, Group 2 metals.
         return self._alkaline_earth_metals
     
     @property
     def lanthanides(self) -> list[chemelements.Element]:
+        # Metals from atomic numbers 57 to 71.
         return self._lanthanides
     
     @property
     def actinides(self) -> list[chemelements.Element]:
+        # Radioactive elements from atomic numbers 89 to 103.
         return self._actinides
     
     @property
     def halogens(self) -> list[chemelements.Element]:
+        # Reactive Group 17 gases, except astatine and tennessine
+        # which have unknown states.
         return self._halogens
     
     @property
     def noble_gases(self) -> list[chemelements.Element]:
+        # Unreactive Group 18 gases (except oganesson - unknown state).
         return self._noble_gases
 
     def __len__(self) -> int:
@@ -358,7 +405,7 @@ class PeriodicTable:
     
     def __repr__(self) -> str:
         """
-        Displays basic element data as a string: 
+        Displays basic data for each element as a string: 
         atomic number, name, symbol.
         """
         return " | ".join(
@@ -369,7 +416,9 @@ class PeriodicTable:
     
     def __contains__(self, info: str) -> bool:
         """
-        Checks if name/symbol matches an existing element.
+        Checks if a string matches the name or symbol
+        of an existing element.
+
         Case-insensitive.
         """
         # For name check.
@@ -384,7 +433,7 @@ class PeriodicTable:
     def _get_element_dicts(
         self, elements: list[chemelements.Element], dicts: dict
     ) -> list[dict]:
-        # Gets corresponding dictionaries for a set of elements.
+        # Gets corresponding dictionaries for a category of elements.
         return [dicts[element.name] for element in elements]
 
     def asdict(
@@ -393,6 +442,7 @@ class PeriodicTable:
         """
         Returns a dictionary of the periodic table data; 
         also casting element data into dictionaries if specified.
+
         If 'elements_only' is passed as True, only a dictionary
         of the elements will be returned, not the different
         categories of elements alongside.
@@ -462,9 +512,10 @@ class PeriodicTable:
     
     def to_json(
         self, elements_only: bool = False,
-        indent: int | None = None, compact: bool = False) -> str:
+        indent: Union(int, None) = None, compact: bool = False) -> str:
         """
-        Returns periodic table data as a JSON string.
+        Returns periodic table data as a JSON string
+        (first converted into a dictionary).
 
         If 'elements_only' is passed as True, only JSON
         data for the elements will be returned, not the different

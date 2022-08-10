@@ -1,6 +1,19 @@
+"""
+This module holds the Element class, which represents one of the
+118 elements of the Periodic Table.
+
+It can be used on its own, especially if you only need data
+on one or a few elements, and not the entire Periodic Table.
+"""
+
+
 import json
 
-from data import DATA
+# Yes, Python 3.10 indeed supports '|',
+# but this allows compatability with older Python versions.
+from typing import Union
+
+from data import ELEMENTS_DATA
 from exceptions import ElementDoesNotExist
 
 
@@ -16,7 +29,7 @@ class Element:
     flerovium, moscovium, livermorium, tennessine, oganesson
     """
 
-    def __init__(self, info: str | int) -> None:
+    def __init__(self, info: Union[str, int]) -> None:
         """
         The 'info' parameter allows for 3 ways to identify an element:
         - Name of element e.g hydrogen <str>
@@ -39,7 +52,9 @@ class Element:
         # Kelvin, Celsius and Fahrenheit are all supported.
         # Density is in g/cm^3
 
-        for element_data in DATA:
+        for element_data in ELEMENTS_DATA:
+            # Checks info either matches element name, symbol
+            # or atomic number.
             if info in (
                 element_data["name"],
                 element_data["symbol"].lower(),
@@ -108,21 +123,26 @@ class Element:
         return self.atomic_number
     
     def __repr__(self) -> str:
+        """
+        Returns element name, which is a string.
+        """
         return self.name
 
     def get_display_data(self) -> str:
         """
-        Returns available element information as one string.
+        Returns available element data as one string.
         Useful for outputting element data to the console.
         """
         lines = [
+            # All elements have these data points.
             f"Name: {self.name.title()}",
             f"Symbol: {self.symbol}",
             f"Atomic number: {self.atomic_number}",
-            f"Atomic mass: {self.atomic_mass}"]
-
-        if self.electrons_per_shell is not None:
-            lines.append(f"Electrons per shell: {self.electrons_per_shell}")
+            f"Atomic mass: {self.atomic_mass}",
+            f"Electrons per shell: {self.electrons_per_shell}"]
+        
+        # 'is not None' is constantly used to only add
+        # available data to the display string.
 
         if self.state is not None:
             lines.append(f"State (room temperature): {self.state.title()}")
@@ -177,8 +197,8 @@ class Element:
     
     def __eq__(self, element) -> bool:
         """
-        Checks if two elements instances are the same (atomic number).
-        Opposite is != (not equal)
+        Checks if two Element instances are the same (atomic number).
+        Opposite is != (not equal).
         """
         if not isinstance(element, Element):
             return False
@@ -196,7 +216,7 @@ class Element:
     def __ge__(self, element) -> bool:
         """
         Checks if the element has a greater atomic number than
-        or equal to another.
+        or equal to another element.
         """
         self._validate_object_to_compare(element)
         
@@ -213,7 +233,7 @@ class Element:
     def __le__(self, element) -> bool:
         """
         Checks if the element has a lower atomic number than
-        or equal to another.
+        or equal to another element.
         """
         self._validate_object_to_compare(element)
         
@@ -221,7 +241,10 @@ class Element:
     
     def asdict(self) -> dict:
         """
-        Returns a dictionary of the element data.
+        Returns a dictionary of all the element data.
+
+        Element attributes/properties are the keys,
+        and their corresponding data are the values.
         """
         return dict(self.__dict__) | {
             # Additional element data (properties).
@@ -234,10 +257,11 @@ class Element:
         }
     
     def to_json(
-        self, indent: int | None = None, compact: bool = False) -> str:
+        self, indent: Union[int, None] = None, compact: bool = False) -> str:
         """
-        Returns element data as a JSON string.
-        
+        Returns element data as a JSON string
+        (first converted into a dictionary).
+
         'compact' to True removes all unnecessary whitespace in
         the JSON string.
         """
