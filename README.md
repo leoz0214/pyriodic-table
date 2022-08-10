@@ -28,6 +28,7 @@ For example, the first element is called hydrogen.
 This is the abbrevation for an element, consisting of one or two Latin letters, and
 starting with a capital letter. It is much more convenient than having to refer
 to an element's name.
+
 For example, the symbol for hydrogen is '**H**', and the symbol
 for gold is '**Au**' (*aurum*).
 
@@ -37,7 +38,8 @@ As in the example of gold, element symbols can be misleading and not so obvious 
 
 This is just the number of protons in an atom's nucleus (which also happens to be
 the number of electrons in an atom's shells - to cancel out the positive charge of the
-protons). In addition, the atomic number indicates the nth element. 
+protons). In addition, the atomic number indicates the nth element.
+
 For example, hydrogen has an atomic number of **1** and is the **1**st element. And oganesson has an atomic number
 of **118** and is the **118**th element.
 
@@ -138,8 +140,6 @@ research institute in Japan) discovered nihonium.
 Self-explanatory! This refers to the year of element discovery.
 For example, hydrogen was discovered in **1766** (by Cavendish),
 and nihonium was discovered relatively recently - in **2004**.
-
-For example, 
 
 ### Data accuracy, completeness and reliability
 
