@@ -169,6 +169,8 @@ class Element:
         return "\n".join(lines)
     
     def _validate_object_to_compare(self, obj) -> None:
+        # Ensures object being compared (>/>=/</<=)
+        # is of type Element.
         if not isinstance(obj, Element):
             raise TypeError("Cannot compare <{} with Element.".format(
                 str(type(obj)).split()[1]))
@@ -235,6 +237,7 @@ class Element:
         self, indent: int | None = None, compact: bool = False) -> str:
         """
         Returns element data as a JSON string.
+        
         'compact' to True removes all unnecessary whitespace in
         the JSON string.
         """
