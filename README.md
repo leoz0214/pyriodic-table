@@ -11,6 +11,8 @@ starting with **hydrogen**, all the way to the super-heavy **oganesson**!
 The PyPi page for the package is:
 https://pypi.org/project/pyriodic-table/
 
+The most recent version is 1.0.0.
+
 ## About the data
 
 Various data points are provided for each element.
@@ -26,7 +28,7 @@ For example, the first element is called hydrogen.
 #### Symbol
 
 This is the abbrevation for an element, consisting of one or two Latin letters, and
-starting with a capital letter. It is much more convenient than having to refer
+starts with a capital letter. It is much more convenient than having to refer
 to an element's name.
 
 For example, the symbol for hydrogen is '**H**', and the symbol
@@ -46,7 +48,7 @@ of **118** and is the **118**th element.
 #### Atomic mass
 
 This is how heavy on average an atom of an element is, compared to the carbon-12 isotope,
-which has an atomic mass of exactly 12. For example, if element X has an isotope with mass
+which has a mass of exactly 12. For example, if element X has an isotope with mass
 number of 25 (50% of element X), and an isotope with mass number of 27 (50% of element X),
 element X would have an atomic mass of 26. If an element has no stable isotopes, the mass
 number of its longest-lived isotope is considered to be its atomic mass.
@@ -58,6 +60,7 @@ radioisotopes).
 #### Electrons per shell
 
 This is the number of electrons in each energy level of an atom.
+
 For example, hydrogen has only one electron and thus only 1 shell: **(1,)**.
 But potassium has 19 electrons: **(2, 8, 8, 1)**.
 
@@ -73,8 +76,8 @@ Surprisingly, only two elements are liquids at room temperature: bromine and mer
 
 #### Group
 
-A group in the periodic table is a vertical column of elements. Most elements belong in a group,
-but some elements, including certain lanthanides (e.g lanthanum), are not put into one.
+A group in the periodic table is a vertical column of elements. Most elements belong in one,
+but some elements, including most lanthanides (e.g lanthanum), are not put into one.
 Some groups also have special names, including:
 
 - Group 1 - **alkali metals** (e.g sodium) [Be careful, hydrogen is also in group 1 but certainly is not a metal.]
@@ -151,9 +154,11 @@ Unfortunately, many elements have missing data, such as melting/boiling points a
 Furthermore, particular data for certain elements may be inaccurate.
 
 Nonetheless, the common elements likely have high-quality accurate data, and conveniently, they are the
-most used. For example, unsurprisingly oxygen, an abundant element we need for respiration
+most used.
+
+For example, unsurprisingly oxygen, an abundant element we need for respiration
 is much better known than livermorium, a synthetic, radioactive, short-lived element of which
-only a few atoms have been produced.
+only a few atoms have ever been produced.
 
 ## Compatability
 
