@@ -1,6 +1,6 @@
 """
 This module holds the PeriodicTable class, which
-unsurprisisngly, has data on all 118 elements.
+unsurprisingly, has data on all 118 elements.
 
 It also providides utility methods to seamlessly iterate through
 the elements, and identify them with various data points.
@@ -8,14 +8,9 @@ the elements, and identify them with various data points.
 There is also a function to save data of elements to a CSV file,
 which can be useful for data analysis.
 """
-
-
 import json
 import csv
-
-# For Union - yes, Python 3.10 indeed supports '|',
-# but this allows compatability with older Python versions.
-from typing import Callable, Union
+from typing import Callable, Union, Literal
 
 from . import chemelements
 from .exceptions import ElementDoesNotExist
@@ -216,7 +211,9 @@ class PeriodicTable:
         """
         return [element for element in self if function_check(element.symbol)]
     
-    def get_elements_by_state(self, state: str) -> list[chemelements.Element]:
+    def get_elements_by_state(
+        self, state: Literal["solid", "liquid", "gas"]
+    ) -> list[chemelements.Element]:
         """
         Finds the elements at a particular state at room temperature.
 
@@ -259,7 +256,7 @@ class PeriodicTable:
         # by melting/boiling point.
         def wrap(
             self, minimum: Union[int, float], maximum: Union[int, float],
-            unit: str = "k") -> list[chemelements.Element]:
+            unit: Literal["k", "c", "f"] = "k") -> list[chemelements.Element]:
 
             unit = unit.lower()
 
@@ -312,7 +309,8 @@ class PeriodicTable:
         """
         return [
             element for element in self
-            if element.density and minimum <= element.density <= maximum]
+            if element.density is not None
+            and minimum <= element.density <= maximum]
     
     def get_elements_by_discovery_year(
         self, minimum: int, maximum: int) -> list[chemelements.Element]:
@@ -325,7 +323,7 @@ class PeriodicTable:
         """
         return [
             element for element in self
-            if element.discovery_year
+            if element.discovery_year is not None
             and minimum <= element.discovery_year <= maximum]
         
     @property

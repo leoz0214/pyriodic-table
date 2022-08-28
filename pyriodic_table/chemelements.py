@@ -5,12 +5,7 @@ This module holds the Element class, which represents one of the
 It can be used on its own, especially if you only need data
 on one or a few elements, and not the entire Periodic Table.
 """
-
-
 import json
-
-# Yes, Python 3.10 indeed supports '|',
-# but this allows compatability with older Python versions.
 from typing import Union
 
 from .data import ELEMENTS_DATA
@@ -195,7 +190,7 @@ class Element:
             raise TypeError("Cannot compare <{} with Element.".format(
                 str(type(obj)).split()[1]))
     
-    def __eq__(self, element) -> bool:
+    def __eq__(self, element: "Element") -> bool:
         """
         Checks if two Element instances are the same (atomic number).
         Opposite is != (not equal).
@@ -205,7 +200,7 @@ class Element:
         
         return self.atomic_number == element.atomic_number
     
-    def __gt__(self, element) -> bool:
+    def __gt__(self, element: "Element") -> bool:
         """
         Checks if the element has a greater atomic number than another.
         """
@@ -213,7 +208,7 @@ class Element:
 
         return self.atomic_number > element.atomic_number
     
-    def __ge__(self, element) -> bool:
+    def __ge__(self, element: "Element") -> bool:
         """
         Checks if the element has a greater atomic number than
         or equal to another element.
@@ -222,7 +217,7 @@ class Element:
         
         return self.atomic_number >= element.atomic_number
 
-    def __lt__(self, element) -> bool:
+    def __lt__(self, element: "Element") -> bool:
         """
         Checks if the element has a lower atomic number than another.
         """
@@ -230,7 +225,7 @@ class Element:
         
         return self.atomic_number < element.atomic_number
     
-    def __le__(self, element) -> bool:
+    def __le__(self, element: "Element") -> bool:
         """
         Checks if the element has a lower atomic number than
         or equal to another element.
