@@ -4,11 +4,11 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "pyriodic-table"
-version = "1.0.0"
+version = "1.0.1"
 authors = [
   { name="Leo Zhang", email="leozhang0214@gmail.com" },
 ]
-description = "A library which provides data on the Periodic Table of Elements."
+description = "A package which provides data on the Periodic Table of Elements."
 readme = "README.md"
 license = { file="LICENSE" }
 requires-python = ">=3.9"
